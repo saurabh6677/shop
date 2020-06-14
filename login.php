@@ -28,11 +28,7 @@ require_once("assist/nav.php");
 		<div class="col-md-2"></div>
 		<div class="col-md-8" >
 			<div class="shadow-lg py-3 m-3 rounded-lg" style="border-left: 5px solid blue">
-			<form class="signup-form pl-4">
-				<div class="form-group">
-					<label for="fullname">Fullname<sup style="color: red">*</sup></label>
-					<input required="required" placeholder="raju kumar" type="text" name="fullname" class="form-control w-75" id="fullname">
-				</div>
+			<form class="login-form pl-4">
 				<div class="form-group">
 					<label for="email">Email<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@gmail.com" type="text" name="email" class="form-control w-75" id="email">
@@ -41,12 +37,8 @@ require_once("assist/nav.php");
 					<label for="password">Password<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id="password">
 				</div>
-				<div class="form-group">
-					<label for="re-password">Re-enter Password<sup style="color: red">*</sup></label>
-					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id=re-password>
-				</div>
-				<button class="btn signup-btn btn-primary" type="submit">Signup now</button>    <span class="ml-5 "><a href="http://localhost/bookstore/login.php">If You already have an account ?</a></span>
-				<div class="signup-notice"></div>
+				<button class="btn login-btn btn-primary" type="submit">Login Now</button>         <span class="ml-5 "><a href="http://localhost/bookstore/signup.php">You don't have account ?</a></span>
+				<div class="login-notice"></div>
 			</form>
 		</div>
 		</div>
