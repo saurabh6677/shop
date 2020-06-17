@@ -37,7 +37,8 @@ require_once("assist/nav.php");
 					<label for="password">Password<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id="password">
 				</div>
-				<button class="btn login-btn btn-primary" type="submit">Login Now</button>         <span class="ml-5 "><a href="http://localhost/bookstore/signup.php">You don't have account ?</a></span>
+				<button class="btn login-btn btn-primary" type="submit">Login Now</button>        <span class="ml-5 "><a href="http://localhost/bookstore/shop/forgot.php">Forgot password ?</a></span> 
+				<p class="ml-auto mt-3"><a href="http://localhost/bookstore/shop/signup.php">You don't have account ?</a></p>
 				<div class="login-notice"></div>
 			</form>
 		</div>

@@ -6,8 +6,8 @@
 		<li class="nav-item"><a href="#" class="nav-link font-weight-bold active">Home</a></li>
 		<li class="nav-item"><a href="#" class="nav-link font-weight-bold">Audio</a></li>
 		<li class="nav-item"><a href="#" class="nav-link font-weight-bold">Video</a></li>
-		<li class="nav-item"><a href="#" class="nav-link font-weight-bold">File</a></li>
-		<li class="nav-item"><a href="#" class="nav-link font-weight-bold">Home</a></li>
+		<li class="nav-item"><a href="login.php" class="nav-link font-weight-bold">Login</a></li>
+		<li class="nav-item"><a href="signup.php" class="nav-link font-weight-bold">Signup</a></li>
 	</ul>
 	</div>
 </nav>

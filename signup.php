@@ -45,7 +45,7 @@ require_once("assist/nav.php");
 					<label for="re-password">Re-enter Password<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id=re-password>
 				</div>
-				<button class="btn signup-btn btn-primary" type="submit">Signup now</button>    <span class="ml-5 "><a href="http://localhost/bookstore/login.php">If You already have an account ?</a></span>
+				<button class="btn signup-btn btn-primary" type="submit">Signup now</button>    <span class="ml-5 "><a href="http://localhost/bookstore/shop/login.php">If You already have an account ?</a></span>
 				<div class="signup-notice"></div>
 			</form>
 		</div>
