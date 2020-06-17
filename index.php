@@ -18,6 +18,7 @@
 require_once("assist/nav.php");
 
 ?>
+<p>Footer</p>
 </body>
 </html>
 
