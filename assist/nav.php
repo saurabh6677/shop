@@ -6,8 +6,8 @@ $signup_btn = "";
 if(!empty($_COOKIE['_bk_']))
 {
 	$username = base64_decode($_COOKIE['_bk_']);
-	 $login_btn = '<li class="nav-item"><a href="profile.php" class="nav-link font-weight-bold"><i class="fa fa-user"></i></a></li>';
-	 $signup_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/pages/php/logout.php" class="nav-link font-weight-bold">Logout</a></li>';
+	 $login_btn = '<li class="nav-item"><a href="profile.php" class="nav-link font-weight-bold"><i class="fa fa-user"></i> Profile</a></li>';
+	 $signup_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/pages/php/logout.php" class="nav-link font-weight-bold"><i class="fa fa-sign-out"></i> Logout</a></li>';
 }
 else
 {

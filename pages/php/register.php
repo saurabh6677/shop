@@ -8,7 +8,12 @@ $otp = rand(768325, 6);
 $check = "SELECT * FROM users";
 $response = $db->query($check);
 if($response)
-{
+{ 
+
+	$check = "SELECT * FROM users WHERE email='$email'";
+	$response = $db->query($check);
+	if($response->num_rows == 0)
+	{
 	$store = "INSERT INTO users(fullname,email,password,otp)VALUES('$fullname','$email','$password','$otp')";
 		$response = $db->query($store);
 		if($response)
@@ -27,6 +32,11 @@ if($response)
 		{
 			echo "unable to insert data in users table";
 		}
+	}
+	else
+	{
+		echo "this email already registerd";
+	}
 
 }
 else
