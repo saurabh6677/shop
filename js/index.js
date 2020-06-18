@@ -88,7 +88,7 @@ $(document).ready(function(){
 			{
 				if(response.trim() == "success")
 				{
-					window.location = "https://www.google.com";
+					window.location = "http://localhost/bookstore/shop/index.php";
 				}
 				else if(response.trim() == "pending")
 				{
@@ -117,7 +117,9 @@ $(document).ready(function(){
 								$(".verify-btn").html("Verify");
 								if(response.trim() =="success")
 								{
-									window.location = "https://www.google.com";
+									window.location = "http://localhost/bookstore/shop/index.php";
+
+
 								}
 								else
 								{
@@ -189,3 +191,152 @@ $(document).ready(function(){
 });
 
 //login code end here
+
+
+// forgot password code
+
+
+$(document).ready(function(){
+	$(".send-otp").click(function(){
+		var email = $(".email").val();
+		$.ajax({
+			type : "POST",
+			url : "pages/php/resend.php",
+			data : {
+				email : email
+			},
+			beforeSend : function(){
+				$(".send-otp").html("please wait..");
+			},
+			success : function(response){
+				$(".send-otp").html("Submit");
+				$(".email").val("");
+				if(response.trim() == "please check your email and verify your account")
+				{
+					$(".email-box").addClass("d-none");
+					$(".otp-box").removeClass("d-none");
+
+					// verify otp
+
+					$(".verify-btn").click(function(){
+						var otp = $(".otp").val();
+						$.ajax({
+							type : "POST",
+							url : "pages/php/verify.php",
+							data : {
+								otp : Number(otp),
+								email : email
+							},
+							beforeSend : function()
+							{
+								$(".verify-btn").html("Please wait..");
+								$(".verify-btn").attr("disabled","disabled");
+							},
+							success : function(response){
+								$(".verify-btn").html("Verify");
+								if(response.trim() =="success")
+								{
+									$(".otp-box").addClass("d-none");
+									$(".new-password-box").removeClass("d-none");
+									$(".change-password-btn").click(function(){
+										$(".change-password-btn").attr("disabled","disabled");
+										var password = $("#new-password").val();
+										if(password == $("#re-new-password").val())
+										{
+											$.ajax({
+												type : "POST",
+												url : "pages/php/change_password.php",
+												data : {
+													email : email,
+													password : password
+												},
+												beforeSend : function(){
+													$(".change-password-btn").attr("disabled","disabled");
+													$(".change-password-btn").html("Please wait..");
+												},
+												success : function(response)
+												{
+													var div = document.createElement("DIV");
+												div.className = "alert-success w-75 mt-3 p-3";
+												div.innerHTML = response;
+												$(".forgot-notice").append(div);
+												}
+											});
+										}
+										else
+										{
+											var div = document.createElement("DIV");
+											div.className = "alert-warning w-75 mt-3 p-3";
+											div.innerHTML = "password and re entered password must be same";
+												$(".forgot-notice").append(div);
+											setTimeout(function(){
+
+											$(".forgot-notice").html("");
+											
+											$(".change-password-btn").removeAttr("disabled");
+												},2000);	
+										}
+									});
+
+
+								}
+								else
+								{
+									var div = document.createElement("DIV");
+										div.className = "alert-warning w-75 mt-3 p-3";
+										div.innerHTML = response;
+										$(".forgot-notice").append(div);
+										setTimeout(function(){
+
+										$(".forgot-notice").html("");
+										var otp = $(".otp").val("");
+										$(".verify-btn").removeAttr("disabled");
+												},2000);	
+								}
+							}
+						});
+					});
+					//end verify otp code
+					//resend otp 
+					$(".resend-btn").click(function(){
+						
+						$.ajax({
+							type : "POST",
+							url : "pages/php/resend.php",
+							data : {
+								email : email
+							},
+							beforeSend : function()
+							{
+								$(".resend-btn").html("please wait...");
+								$(".resend-btn").attr("disabled","disabled");
+							},
+							success : function(response)
+							{
+								$(".resend-btn").html("Resend");
+								$(".resend-btn").removeAttr("disabled");
+								var div = document.createElement("DIV");
+										div.className = "alert-warning w-75 mt-3 p-3";
+										div.innerHTML = response;
+										$(".forgot-notice").append(div);
+										setTimeout(function(){
+										$(".forgot-notice").html("");
+										},2000);
+							}
+						});
+					});
+
+					// end resend otp code
+
+				}
+				else
+				{
+					var div = document.createElement("DIV");
+					div.className = "alert-warning w-75 mt-3 p-3";
+					div.innerHTML = response;
+					$(".forgot-notice").append(div);	
+				}
+			}
+		});
+	});
+});

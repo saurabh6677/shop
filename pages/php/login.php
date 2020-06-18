@@ -19,6 +19,10 @@ if($response->num_rows != 0)
 		}
 		else
 		{
+			$username = base64_encode($email);
+			$time = time()+(60*60*24*365);
+
+			setcookie("_bk_",$username,$time,"/");
 			echo "success";
 		}
 	}

@@ -1,5 +1,5 @@
 @charset "utf-8";
 
 .footer-box a {
-	text-decoration: none;
+	text-decoration: none !importent;
 }

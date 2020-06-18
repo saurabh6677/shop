@@ -28,20 +28,12 @@ require_once("assist/nav.php");
 		<div class="col-md-2"></div>
 		<div class="col-md-8" >
 			<div class="shadow-lg py-3 m-3 rounded-lg" style="border-left: 5px solid blue">
-			<form class="login-form pl-4">
-				<div class="form-group">
-					<label for="email">Email<sup style="color: red">*</sup></label>
-					<input required="required" placeholder="raju@gmail.com" type="text" name="email" class="form-control w-75" id="email">
-				</div>
-				<div class="form-group">
-					<label for="password">Password<sup style="color: red">*</sup></label>
-					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id="password">
-				</div>
-				<button class="btn login-btn btn-primary" type="submit">Login Now</button>        <span class="ml-5 "><a href="http://localhost/bookstore/shop/forgot_password.php">Forgot password ?</a></span> 
-				<p class="ml-auto mt-3"><a href="http://localhost/bookstore/shop/signup.php">You don't have account ?</a></p>
-				
-			</form>
-			<div class="login-notice"></div>
+			
+			<div class="ml-4 form-group email-box">
+				<label for="email">Enter your email</label>
+				<input type="email" name="email" placeholder="example@gmail.com" class="email form-control w-75" id="email"><br>
+				<button class="btn btn-primary send-otp">Submit</button>
+			</div>
 			<div class="otp-box d-none ml-4">
 				<h4 class="text-primary">Verify Your Email</h4>
 				<span class="text-danger">Please check your email to verify your account</span><br><br>	
@@ -53,6 +45,20 @@ require_once("assist/nav.php");
 				<button type="btn" class="btn btn-danger resend-btn">Resend OTP</button>
 				</div>
 			</div>
+			
+			<div class="new-password-box d-none ml-4">
+				<h4 class="text-primary">Create New Password</h4>
+				<div class="form-group">
+					<label for='new-password'>Enter new password</label>
+					<input type="text" name="new_password" id="new-password" class="form-control w-75">
+				</div>
+				<div class="form-group">
+					<label for='re-new-password'>Re-Enter new password</label>
+					<input type="text" name="re-new_password" id="re-new-password" class="form-control w-75">
+				</div>
+				<button class="btn btn-primary change-password-btn">Change Password</button>
+			</div>
+			<div class="forgot-notice"></div>
 		</div>
 		</div>
 		<div class="col-md-2"></div>

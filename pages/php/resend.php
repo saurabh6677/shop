@@ -4,7 +4,7 @@ $email = $_POST['email'];
 
 $otp = rand(768325, 6);
 
-$update = "UPDATE users SET otp='$otp' WHERE email='$email' AND status='pending'";
+$update = "UPDATE users SET otp='$otp' WHERE email='$email'";
 $response = $db->query($update);
 if($response)
 {
@@ -20,7 +20,7 @@ if($response)
 }
 else
 {
-	echo $otp;
+	echo "unable to send otp";
 }
 
 ?>

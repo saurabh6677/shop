@@ -2,7 +2,7 @@
 require_once("../../common_files/database/database.php");
 $email = $_POST['email'];
 $otp = $_POST['otp'];
-$check = "SELECT * FROM users WHERE email='$email' AND status='pending'";
+$check = "SELECT * FROM users WHERE email='$email'";
 $response = $db->query($check);
 if($response->num_rows !=0)
 {
@@ -16,6 +16,10 @@ if($response->num_rows !=0)
   	if($response)
   	{
   		
+      $username = base64_encode($email);
+      $time = time()+(60*60*24*365);
+
+      setcookie("_bk_",$username,$time,"/");
   		echo "success";
   	}
   	else
@@ -27,6 +31,10 @@ if($response->num_rows !=0)
   {
   	echo "wrong otp";
   }
+}
+else
+{
+  echo $email;
 }
 
 ?>

@@ -53,7 +53,11 @@ require_once("assist/nav.php");
 		<div class="col-md-2"></div>
 	</div>
 </div>
-<p></p>
+
+<?php
+require_once("assist/footer.php");
+
+?>
 </body>
 </html>
 
