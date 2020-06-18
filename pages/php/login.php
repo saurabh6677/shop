@@ -12,7 +12,15 @@ if($response->num_rows != 0)
 	$response = $db->query($check_password);
 	if($response->num_rows != 0)
 	{
-		echo "success";
+		$data = $response->fetch_assoc();
+		if($data['status'] == "pending")
+		{
+			echo "pending";
+		}
+		else
+		{
+			echo "success";
+		}
 	}
 	else
 	{

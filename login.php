@@ -39,8 +39,20 @@ require_once("assist/nav.php");
 				</div>
 				<button class="btn login-btn btn-primary" type="submit">Login Now</button>        <span class="ml-5 "><a href="http://localhost/bookstore/shop/forgot.php">Forgot password ?</a></span> 
 				<p class="ml-auto mt-3"><a href="http://localhost/bookstore/shop/signup.php">You don't have account ?</a></p>
-				<div class="login-notice"></div>
+				
 			</form>
+			<div class="login-notice"></div>
+			<div class="otp-box d-none ml-4">
+				<h4 class="text-primary">Verify Your Email</h4>
+				<span class="text-danger">Please check your email to verify your account</span><br><br>	
+				<div class="btn-group  border">
+				<button class="btn">
+				<input type="number" name="otp" class="form-control otp w-100">
+				</button>
+				<button type="btn" class="btn btn-primary verify-btn">Verify</button>
+				<button type="btn" class="btn btn-danger resend-btn">Resend OTP</button>
+				</div>
+			</div>
 		</div>
 		</div>
 		<div class="col-md-2"></div>

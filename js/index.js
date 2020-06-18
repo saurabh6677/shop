@@ -90,6 +90,84 @@ $(document).ready(function(){
 				{
 					window.location = "https://www.google.com";
 				}
+				else if(response.trim() == "pending")
+				{
+					
+
+					// verify code
+
+					$(".login-form").addClass("d-none");
+					$(".otp-box").removeClass("d-none");
+					$(".verify-btn").click(function(){
+						var otp = $(".otp").val();
+						var email = $("#email").val();
+						$.ajax({
+							type : "POST",
+							url : "pages/php/verify.php",
+							data : {
+								otp : Number(otp),
+								email : email
+							},
+							beforeSend : function()
+							{
+								$(".verify-btn").html("Please wait..");
+								$(".verify-btn").attr("disabled","disabled");
+							},
+							success : function(response){
+								$(".verify-btn").html("Verify");
+								if(response.trim() =="success")
+								{
+									window.location = "https://www.google.com";
+								}
+								else
+								{
+									var div = document.createElement("DIV");
+										div.className = "alert-warning w-75 mt-3 p-3";
+										div.innerHTML = response;
+										$(".login-notice").append(div);
+										setTimeout(function(){
+
+										$(".login-notice").html("");
+										var otp = $(".otp").val("");
+										$(".verify-btn").removeAttr("disabled");
+												},2000);	
+								}
+							}
+						});
+					});
+					//end verify otp code
+
+					//resend otp 
+					$(".resend-btn").click(function(){
+						var email = $("#email").val();
+						$.ajax({
+							type : "POST",
+							url : "pages/php/resend.php",
+							data : {
+								email : email
+							},
+							beforeSend : function()
+							{
+								$(".resend-btn").html("please wait...");
+								$(".resend-btn").attr("disabled","disabled");
+							},
+							success : function(response)
+							{
+								$(".resend-btn").html("Resend");
+								$(".resend-btn").removeAttr("disabled");
+								var div = document.createElement("DIV");
+										div.className = "alert-warning w-75 mt-3 p-3";
+										div.innerHTML = response;
+										$(".login-notice").append(div);
+										setTimeout(function(){
+										$(".login-notice").html("");
+										},2000);
+							}
+						});
+					});
+
+					// end resend otp code
+				} 
 				else
 				{
 					$(".login-btn").html("Login Now");
@@ -103,6 +181,7 @@ $(document).ready(function(){
 					setTimeout(function(){
 						$(".login-notice").html("");
 					},2000);
+					
 				}
 			}
 		});
