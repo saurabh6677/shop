@@ -340,3 +340,133 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+// upload file code 
+
+$(document).ready(function(){
+		$(".upload-form").submit(function(e){
+			e.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : "pages/php/upload.php",
+				data : new FormData(this),
+				processData : false,
+				contentType : false,
+				cache : false,
+				xhr : function()
+				{
+					var request = new XMLHttpRequest();
+					request.upload.onprogress = function(e)
+					{
+						var percentage = Math.floor((e.loaded*100)/e.total);
+						$(".upload-bar").css({
+							width : percentage+"%"
+						});
+						$(".upload-bar").html(percentage+"%");
+
+					}
+					return request;
+				},
+				beforeSend : function()
+				{
+					$(".upload-bar-con").removeClass("d-none");
+					$(".upload-btn").html("Please wait...");
+					$(".upload-btn").attr("disabled","disabled");
+				},
+				success : function(response)
+				{
+					
+					if(response.trim() == "success")
+					{
+						var div = document.createElement("DIV");
+						div.className = "alert-success p-2 text-center";
+						div.innerHTML = "Your book uploading successfull";
+						$(".upload-notice").append(div);
+						setTimeout(function(){
+							$(".upload-bar-con").addClass("d-none");
+							$(".upload-btn").html("Upload");
+							$(".upload-form").trigger('reset');
+							$(".upload-btn").removeAttr("disabled");
+							$(".upload-notice").html("");
+						},2000);
+					}
+					else
+					{
+						var div = document.createElement("DIV");
+						div.className = "alert-warning p-2 text-center";
+						div.innerHTML = response;
+						$(".upload-notice").append(div);
+						setTimeout(function(){
+							$(".upload-bar-con").addClass("d-none");
+							$(".upload-btn").html("Upload");
+							$(".upload-form").trigger('reset');
+							$(".upload-btn").removeAttr("disabled");
+							$(".upload-notice").html("");
+						},2000);
+					}
+				}
+			});
+		});
+	});
+
+// end upload code
+
+// dynamic page request
+
+$(document).ready(function(){
+	$(".menu").each(function(){
+		$(this).click(function(){
+			$(".menu").removeClass("border border-primary");
+			var link = $(this).attr("link");	
+			$(this).addClass("border border-primary");	
+			$.ajax({
+				type : "POST",
+				url : link,
+				success : function(response){
+					$(".dynamic-result").html(response);
+				}
+			});
+		});
+	
+
+	});
+});
+
+// edit profile code 
+
+$(document).ready(function(){
+			$(".edit-form").submit(function(e){
+				e.preventDefault();
+				$.ajax({
+					type : "POST",
+					url : "pages/php/edit_details.php",
+					data : new FormData(this),
+					processData : false,
+					contentType : false,
+					cache : false,
+					beforeSend : function()
+					{
+						var div = document.createElement("DIV");
+						div.className = "alert-warning p-3 text-center";
+						div.innerHTML = "Please wait"
+						$(".edit-notice").append(div);
+						$(".save-btn").attr("disabled","disabled");
+					},
+					success : function(response)
+					{
+						$(".edit-notice").html("");
+						var div = document.createElement("DIV");
+						div.className = "alert-success p-3 text-center";
+						div.innerHTML = response;
+						$(".edit-notice").append(div);
+						$(".save-btn").removeAttr("disabled");
+						$(".edit-form").trigger("reset");
+						setTimeout(function(){
+							$(".edit-notice").html("");
+						},3000);	
+					}
+				});
+			});
+		
+	});

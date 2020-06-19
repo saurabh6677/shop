@@ -1,4 +1,5 @@
 <?php
+
 require_once("../../common_files/database/database.php");
 $email = $_POST['email'];
 $otp = $_POST['otp'];

@@ -1,10 +1,17 @@
 <?php
+$username = base64_decode($_COOKIE['_bk_']);
+if(empty($username))
+{
+	header("Location: http://localhost/bookstore/shop/login.php");
+	exit;
+}
 require_once("../../common_files/database/database.php");
 $file = $_FILES['thumb'];
 $file_name = $file['name'];
 $file_location = $file['tmp_name'];
 $price = $_POST['price'];
 $title = $_POST['book_name'];
+$image_type = $file['type'];
 $cat = $_POST['book-cat'];
 $upload_date = date('Y-m-d');
 $username = base64_decode($_COOKIE['_bk_']);
@@ -25,7 +32,48 @@ if($response)
 		  		$store_file = move_uploaded_file($file_location, "../../products/".$file_name);
 		  		if($store_file)
 		  		{
-		  			echo "success";
+		  			//image processing
+		  			if($image_type == "image/jpeg")
+		  			{
+						$image_pixels = imagecreatefromjpeg("../../products/".$file_name);
+						$o_width = imagesx($image_pixels);
+						$o_height = imagesy($image_pixels);
+						$canvas = imagecreatetruecolor(250, 316);
+						imagecopyresampled($canvas,$image_pixels,0,0,0,0,250,316,$o_width,$o_height);
+
+						if(imagejpeg($canvas, "../../products/".$file_name))
+						{
+							echo "success";
+						}
+						else
+						{
+							echo "somthing went wrong";
+						}
+						imagedestroy($image_pixels);
+					}
+					else if($image_type == "image/png")
+					{
+						$image_pixels = imagecreatefrompng("../../products/".$file_name);
+						$o_width = imagesx($image_pixels);
+						$o_height = imagesy($image_pixels);
+						$canvas = imagecreatetruecolor(250, 316);
+						imagecopyresampled($canvas,$image_pixels,0,0,0,0,250,316,$o_width,$o_height);
+
+						if(imagepng($canvas, "../../products/".$file_name))
+						{
+							echo "success";
+						}
+						else
+						{
+							echo "somthing went wrong";
+						}
+						imagedestroy($image_pixels);
+					}
+					else
+					{
+						echo "upload png or jpeg image only";
+					}
+					//end image processing
 		  		}
 		  		else
 		  		{
@@ -68,7 +116,50 @@ else
 		  		$store_file = move_uploaded_file($file_location, "../../products/".$file_name);
 		  		if($store_file)
 		  		{
-		  			echo "success";
+		  			//image processing
+
+					if($image_type == "image/jpeg")
+		  			{
+						$image_pixels = imagecreatefromjpeg("../../products/".$file_name);
+						$o_width = imagesx($image_pixels);
+						$o_height = imagesy($image_pixels);
+						$canvas = imagecreatetruecolor(250, 316);
+						imagecopyresampled($canvas,$image_pixels,0,0,0,0,250,316,$o_width,$o_height);
+
+						if(imagejpeg($canvas, "../../products/".$file_name))
+						{
+							echo "success";
+						}
+						else
+						{
+							echo "somthing went wrong";
+						}
+						imagedestroy($image_pixels);
+					}
+					else if($image_type == "image/png")
+					{
+						$image_pixels = imagecreatefrompng("../../products/".$file_name);
+						$o_width = imagesx($image_pixels);
+						$o_height = imagesy($image_pixels);
+						$canvas = imagecreatetruecolor(250, 316);
+						imagecopyresampled($canvas,$image_pixels,0,0,0,0,250,316,$o_width,$o_height);
+
+						if(imagepng($canvas, "../../products/".$file_name))
+						{
+							echo "success";
+						}
+						else
+						{
+							echo "somthing went wrong";
+						}
+						imagedestroy($image_pixels);
+					}
+					else
+					{
+						echo "upload png or jpeg image only";
+					}
+					
+					//end image processing
 		  		}
 		  		else
 		  		{
@@ -91,6 +182,8 @@ else
 		echo "unaable to create table";
 	}
 }
+
+
 
 
 ?>

@@ -1,4 +1,10 @@
 <?php
+$username = base64_decode($_COOKIE['_bk_']);
+if(empty($username))
+{
+	header("Location: http://localhost/bookstore/shop/login.php");
+	exit;
+}
 require_once("../../common_files/database/database.php");
 $email = $_POST['email'];
 $password = md5($_POST['password']);

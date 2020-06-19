@@ -48,6 +48,11 @@ else
 	password VARCHAR(100),
 	otp INT(10),
 	status VARCHAR(20) DEFAULT 'pending',
+	mobile VARCHAR(20) NULL,
+	pincode VARCHAR(10) NULL,
+	address VARCHAR(250) NULL,
+	college VARCHAR(100) NULL,
+	course VARCHAR(100) NULL,
 	PRIMARY KEY(id)
 	)";
 	$response = $db->query($create);
