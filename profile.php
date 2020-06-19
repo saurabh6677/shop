@@ -51,7 +51,10 @@ require_once("assist/footer.php");
 ?>
 
 <script>
-	
+	$(document).ready(function(){
+		var button_edit = document.getElementsByClassName("edit-profile-btn");
+			$(button_edit).click();
+	});
 </script>
 </body>
 </html>

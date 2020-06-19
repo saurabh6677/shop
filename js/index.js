@@ -415,6 +415,7 @@ $(document).ready(function(){
 // dynamic page request
 
 $(document).ready(function(){
+	
 	$(".menu").each(function(){
 		$(this).click(function(){
 			$(".menu").removeClass("border border-primary");
