@@ -1,4 +1,6 @@
+<?php
 
+echo '
 <div class="container-fluid footer-box bg-white shadow-lg mt-5 p-5 " >
 	<div class="row">
 		<div class="col-md-3">
@@ -38,4 +40,6 @@
 				<i class="fa fa-paypal"></i>
 			</div>
 		</div>
-</div>
+</div>';
+
+?>
