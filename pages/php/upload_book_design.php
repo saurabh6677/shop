@@ -12,11 +12,11 @@ if(empty($username))
 						<input type="text" name="book_name" placeholder="book name" class="form-control w-75" required="required" id="book-name">
 					</div>
 					<div class="form-group">
-						<label for="book-cat">Select Category</label>
+						<label for="book-cat">Select Language</label>
 						<select name="book-cat" class="form-control w-75" id="book-cat" required="required">
-							<option>Chosse category</option>
-							<option>Math</option>
-							<option>english</option>
+							<option>Chosse Language</option>
+							<option>Hindi</option>
+							<option>English</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -37,7 +37,9 @@ if(empty($username))
 				echo '<script>$(document).ready(function(){
 		$(".upload-form").submit(function(e){
 			e.preventDefault();
-			$.ajax({
+			if($("#book-cat").val() != "Chosse Language")
+			{
+				$.ajax({
 				type : "POST",
 				url : "pages/php/upload.php",
 				data : new FormData(this),
@@ -97,7 +99,13 @@ if(empty($username))
 					}
 				}
 			});
-		});
+
+			}
+			else
+			{
+				alert("Chosse Language");
+			}
+					});
 	});</script>';
 
 				?>

@@ -31,7 +31,7 @@ require_once("assist/nav.php");
 			<form class="login-form pl-4">
 				<div class="form-group">
 					<label for="email">Email<sup style="color: red">*</sup></label>
-					<input required="required" placeholder="raju@gmail.com" type="text" name="email" class="form-control w-75" id="email">
+					<input required="required" placeholder="raju@gmail.com" type="email" name="email" class="form-control w-75" id="email">
 				</div>
 				<div class="form-group">
 					<label for="password">Password<sup style="color: red">*</sup></label>

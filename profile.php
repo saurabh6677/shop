@@ -29,12 +29,16 @@ if(empty($username))
 <?php
 require_once("assist/nav.php");
 ?>
-<div class="container-fluid shadow-lg bg-white my-4" >
+<div class="container-fluid my-4" >
 	<div class="row">
 		<div class="col-md-5 p-3 shadow-lg mb-3" style="border-right: 5px solid blue">
-			<button class="btn font-weight-bold add-book-btn menu" link="pages/php/upload_book_design.php"><a href="#" class="text-primary text-decoration-none" style="font-size: 18px"><i class="fa fa-plus "></i> Add Books</a></button><br>
+			<button class="btn font-weight-bold add-book-btn menu" link="pages/php/upload_book_design.php"><a href="#" class="text-primary text-decoration-none" style="font-size: 18px"><i class="fa fa-plus "></i> Sell Books</a></button><br>
 		
 			<button class="btn font-weight-bold menu edit-profile-btn" link="pages/php/edit_profile_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-edit "></i> Edit Profile </a></button>
+			<br>
+			<button class="btn font-weight-bold menu my-products-btn" link="pages/php/my_books_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-book "></i> My Books </a></button>
+			<br>
+			<button class="btn font-weight-bold menu notification-btn" link="pages/php/notification.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-bell"></i> Notification </a></button>
 		</div>
 		
 		<div class="col-md-6 mb-3" >
