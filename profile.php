@@ -39,6 +39,7 @@ require_once("assist/nav.php");
 			<button class="btn font-weight-bold menu my-products-btn" link="pages/php/my_books_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-book "></i> My Books </a></button>
 			<br>
 			<button class="btn font-weight-bold menu notification-btn" link="pages/php/notification.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-bell"></i> Notification </a></button>
+
 		</div>
 		
 		<div class="col-md-6 mb-3" >

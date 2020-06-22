@@ -37,14 +37,33 @@ require_once("assist/nav.php");
 					<label for="password">Password<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id="password">
 				</div>
-				<button class="btn login-btn btn-primary" type="submit">Login Now</button>         <span class="ml-5 "><a href="http://localhost/bookstore/signup.php">You don't have account ?</a></span>
-				<div class="login-notice"></div>
+				<button class="btn login-btn btn-primary" type="submit">Login Now</button>        <span class="ml-5 "><a href="http://localhost/bookstore/shop/forgot_password.php">Forgot password ?</a></span> 
+				<p class="ml-auto mt-3"><a href="http://localhost/bookstore/shop/signup.php">You don't have account ?</a></p>
+				
 			</form>
+			<div class="login-notice"></div>
+			<div class="otp-box d-none ml-4">
+				<h4 class="text-primary">Verify Your Email</h4>
+				<span class="text-danger">Please check your email to verify your account</span><br><br>	
+				<div class="btn-group  border">
+				<button class="btn">
+				<input type="number" name="otp" class="form-control otp w-100">
+				</button>
+				<button type="btn" class="btn btn-primary verify-btn">Verify</button>
+				<button type="btn" class="btn btn-danger resend-btn">Resend OTP</button>
+				</div>
+			</div>
 		</div>
 		</div>
 		<div class="col-md-2"></div>
 	</div>
 </div>
+
+
+<?php
+require_once("assist/footer.php");
+
+?>
 </body>
 </html>
 
