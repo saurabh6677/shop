@@ -557,6 +557,7 @@ $(document).ready(function(){
 				url : link,
 				success : function(response){
 					$(".dynamic-result").html(response);
+					
 				}
 			});
 		});
@@ -603,3 +604,84 @@ $(document).ready(function(){
 		
 	});
 
+// dynamic code
+
+
+	$(document).ready(function(){
+		var width = $(window).width();
+		if(width <768)
+		{
+				var start = 0;
+				var end = 3;
+			dynamic_load(start,end);
+			function dynamic_load(start,end)
+			{
+				$.ajax({
+					type : "POST",
+					url : "pages/php/display_products.php",
+					cache : false,
+					data : {
+						start : start,
+						end : end
+					},
+					success : function(response)
+					{
+						
+						var all_data = JSON.parse(response.trim());
+						$(".result").append(all_data);
+					}
+				});
+			}
+			$(window).scroll(function(){
+				var scroll_top = $(window).scrollTop();
+				var browser_height = $(window).height();
+				var webpage_height = $(document).height();
+				var max_height = scroll_top+browser_height;
+				if(max_height >webpage_height-700)
+				{
+					start = start+end;
+					
+					dynamic_load(start,end)
+
+				}
+			});
+		}
+		else if(width >768)
+		{
+			var start = 0;
+			var end = 8;
+			dynamic_load(start,end);
+			function dynamic_load(start,end)
+			{
+				$.ajax({
+					type : "POST",
+					url : "pages/php/display_products.php",
+					cache : false,
+					data : {
+						start : start,
+						end : end
+					},
+					success : function(response)
+					{
+						
+						var all_data = JSON.parse(response.trim());
+						$(".result").append(all_data);
+					}
+				});
+			}
+			$(window).scroll(function(){
+				var scroll_top = $(window).scrollTop();
+				var browser_height = $(window).height();
+				var webpage_height = $(document).height();
+				var max_height = scroll_top+browser_height;
+				if(max_height >webpage_height-200)
+				{
+					start = start+end;
+					dynamic_load(start,end)
+
+				}
+			});
+	 }
+	});
+
+	

@@ -31,10 +31,25 @@ if(empty($username))
 					<div class="progress upload-bar-con d-none">
 						<div class=" bg-primary  progress-bar upload-bar text-light text-center rounded-lg"></div>
 					</div><br>
+					<div class="shadow-lg preview w-50" align="center" style="margin-left:25%;margin-right:25%;border:3px solid white;">
+					<p class="text-center p-text">Preview</p>
+					</div>
+					<br>
 					<button  type="submit" class="btn btn-primary upload-btn">Upload</button>
 					<div class="upload-notice"></div>
 				</form>';
 				echo '<script>$(document).ready(function(){
+					$("#thumb").on("change", function(){
+						$(".preview").html("");
+						$(".p-text").addClass("d-none");
+						var file = this.files[0];
+						var url = URL.createObjectURL(file);
+						var img = document.createElement("IMG");
+						img.src = url;
+						img.style.width = "100%";
+						$(".preview").append(img);
+
+						});
 		$(".upload-form").submit(function(e){
 			e.preventDefault();
 			if($("#book-cat").val() != "Chosse Language")
@@ -81,6 +96,7 @@ if(empty($username))
 							$(".upload-form").trigger("reset");
 							$(".upload-btn").removeAttr("disabled");
 							$(".upload-notice").html("");
+							$(".preview").html("");
 						},2000);
 					}
 					else
