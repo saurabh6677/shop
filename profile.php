@@ -39,7 +39,7 @@ require_once("assist/nav.php");
 			<button class="btn font-weight-bold menu my-products-btn" link="pages/php/my_books_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-book "></i> My Books </a></button>
 			<br>
 			<button class="btn font-weight-bold menu notification-btn" link="pages/php/notification.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-bell"></i> Notification </a></button><br>
-			<button class="btn font-weight-bold menu request-btn" link="pages/php/request_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-request"></i> Requests </a></button>
+			<button class="btn font-weight-bold menu request-btn" link="pages/php/request_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-paper-plane"></i> Requests </a></button>
 			<br>
 		</div>
 	</div>
@@ -56,10 +56,10 @@ require_once("assist/nav.php");
 			<button class="btn font-weight-bold menu my-products-btn" link="pages/php/my_books_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-book "></i> My Books </a></button>
 			<br>
 			<button class="btn font-weight-bold menu notification-btn" link="pages/php/notification.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-bell"></i> Notification </a></button><br>
-			<button class="btn font-weight-bold menu request-btn" link="pages/php/request_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-request"></i> Requests </a></button>
+			<button class="btn font-weight-bold menu request-btn" link="pages/php/request_design.php"><a href="#" class="text-primary text-decoration-none"   style="font-size: 18px"><i class="fa fa-paper-plane"></i> Requests </a></button>
 		</div>
 		
-		<div class="col-md-6 mb-3" style="z-index:-1">
+		<div class="col-md-6 mb-3">
 			<div class="container py-3  shadow-lg dynamic-result" style="border-left: 5px solid blue">
 			
 			</div>
@@ -80,27 +80,31 @@ require_once("assist/footer.php");
 			$(button_edit).click();
 	});
 	$(document).ready(function(){
-		 var window_height = $(window).height();
-		$(".mobile-menu").css({
-			height : window_height+"px"
-		});
-
-		$(".mobile-menu button").each(function(){
-			$(this).click(function(){
-				$(".mobile-menu").fadeOut(1000);
+		if($(window).width() < 768)
+		{
+			 var window_height = $(window).height();
+			
+			$(".mobile-menu").css({
+				height : window_height+"px"
 			});
-		});
-		$(".mobile-menu-icon").each(function(){
-			$(this).click(function(){
-				var icon = this;
-				$(this).addClass("fa-spin");
-				$(".mobile-menu").toggle(2000,function(e){
-					$(".mobile-menu-icon").removeClass("fa-spin");
+
+			$(".mobile-menu button").each(function(){
+				$(this).click(function(){
+					$(".mobile-menu").fadeOut(1000);
+				});
+			});
+			$(".mobile-menu-icon").each(function(){
+				$(this).click(function(){
+					var icon = this;
+					$(this).addClass("fa-spin");
+					$(".mobile-menu").toggle(2000,function(e){
+						$(".mobile-menu-icon").removeClass("fa-spin");
+					});
+					
 				});
 				
 			});
-			
-		});
+		}
 	});
 </script>
 </body>
