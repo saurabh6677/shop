@@ -17,7 +17,36 @@ require_once("common_files/database/database.php");
 	<script src="common_files/js/popper.js"></script>
 	<script src="common_files/js/bootstrap.min.js"></script>
 	<script src="js/index.js"></script>
-	
+	<style>
+		/* .buy-btn{
+			
+			background: deeppink;
+			border : 2px solid deeppink !important;
+			border-radius: 20px 0px 20px 0px !important;
+			font-weight: bold !important;
+			color: #fff !important;
+		}
+		.buy-btn:hover{
+			background: #fff !important;
+			border : 2px solid deeppink !important;
+			color: deeppink !important;
+		}
+		.cart-btn{
+			
+			background: blue;
+			border : 2px solid blue !important;
+			border-radius: 20px 0px 20px 0px !important;
+			font-weight: bold !important;
+			color: #fff !important;
+		}
+		.cart-btn:hover{
+			background: #fff !important;
+			border : 2px solid blue !important;
+			color: blue !important;
+		}
+
+		*/
+	</style>
 </head>
 <body>
 

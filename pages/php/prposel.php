@@ -52,8 +52,10 @@ if(!empty($price) && !empty($comment) && $sender != $resever)
 		resever VARCHAR(100),
 		resever_name VARCHAR(100),
 		send_date DATE,
-		status VARCHAR(50) DEFAULT 'pending',
+		status VARCHAR(50) DEFAULT 'unread',
 		product_id INT(11),
+		resever_comment MEDIUMTEXT NULL,
+		r_mobile VARCHAR(20) NULL,
 		PRIMARY KEY(id)
 		)";
 		$response = $db->query($create);
