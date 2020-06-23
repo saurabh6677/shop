@@ -1,5 +1,7 @@
 <?php
 require_once("common_files/database/database.php");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +63,39 @@ require_once("assist/nav.php");
 </div>
 <div class="container-fluid my-3 shadow-sm">
 	<div class="row result">
-		
-</div>
+		<div class="col-md-3 shadow-lg">
+			<h4 class="text-center mt-2 text-danger">Filter Products</h4>
+			<hr>
+			<p>Filter By City Name</p>
+			<div class="btn-group border w-100">
+				<button class="btn">
+			<select class="form-control city">
+				<?php
+				$get_city = "SELECT DISTINCT city FROM users";
+				$city_response = $db->query($get_city);
+				if($response)
+				{
+					while($data =$city_response->fetch_assoc())
+					{
+						echo "<option>".$data['city']."</option>";
+					}
+				}
+
+				?>
+				
+			</select>
+			</button>
+			<button class="btn city-btn btn-primary">Get</button>
+		</div>
+		<hr>
+		<p>Filter By Price</p>
+		<div class="btn-group w-100">
+			<button class="btn p-0 w-25"><input type="number" name="price" placeholder="min" class="form-control min"></button>
+			<button class="btn p-0 w-25"><input type="number" name="price" placeholder="max" class="form-control max"></button>
+			<button class="btn p-0 w-25 price-btn btn-danger">GET</button>
+		</div>
+		</div>
+	</div>
 </div>
 <?php
 require_once("assist/footer.php");

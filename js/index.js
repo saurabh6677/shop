@@ -607,7 +607,8 @@ $(document).ready(function(){
 // dynamic code
 
 
-	$(document).ready(function(){
+	function index() {
+		$(document).ready(function(){
 		var width = $(window).width();
 		if(width <768)
 		{
@@ -619,7 +620,7 @@ $(document).ready(function(){
 				$.ajax({
 					type : "POST",
 					url : "pages/php/display_products.php",
-					cache : false,
+					cache : false,  
 					data : {
 						start : start,
 						end : end
@@ -683,8 +684,193 @@ $(document).ready(function(){
 			});
 	 }
 	});
+	}
+index();
+
+	// short by price
+	 $(document).ready(function(){
+	 	$(".price-btn").click(function(){
+	 		var min = $(".min").val();
+	 		var max = $(".max").val();
+
+	 		if(min !="" && max !="")
+	 		{
+					var width = $(window).width();
+					if(width <768)
+					{
+							var start = 0;
+							var end = 3;
+						dynamic_load(start,end);
+						function dynamic_load(start,end)
+						{
+							$.ajax({
+								type : "POST",
+								url : "pages/php/short_by_price.php",
+								cache : false,  
+								data : {
+									start : start,
+									end : end,
+									min : min,
+									max : max
+								},
+								success : function(response)
+								{
+									$(".result").html("");
+									var all_data = JSON.parse(response.trim());
+									$(".result").append(all_data);
+								}
+							});
+						}
+						$(window).scroll(function(){
+							var scroll_top = $(window).scrollTop();
+							var browser_height = $(window).height();
+							var webpage_height = $(document).height();
+							var max_height = scroll_top+browser_height;
+							if(max_height >webpage_height-700)
+							{
+								start = start+end;
+								
+								dynamic_load(start,end)
+
+							}
+						});
+					}
+					else if(width >768)
+					{
+						var start = 0;
+						var end = 8;
+						dynamic_load(start,end);
+						function dynamic_load(start,end)
+						{
+							$.ajax({
+								type : "POST",
+								url : "pages/php/short_by_price.php",
+								cache : false,
+								data : {
+									start : start,
+									end : end,
+									min : min,
+									max : max
+								},
+								success : function(response)
+								{
+									$(".result").html("");
+									var all_data = JSON.parse(response.trim());
+									$(".result").append(all_data);
+								}
+							});
+						}
+						$(window).scroll(function(){
+							var scroll_top = $(window).scrollTop();
+							var browser_height = $(window).height();
+							var webpage_height = $(document).height();
+							var max_height = scroll_top+browser_height;
+							if(max_height >webpage_height-200)
+							{
+								start = start+end;
+								dynamic_load(start,end)
+
+							}
+						});
+				 }
+			}
+			else
+			{
+				alert("please enter min and max price");
+			}
+	 	});
+	 });
+
+	 // end short by price
 
 
+	 // start short by city
+
+	 $(document).ready(function(){
+	 	$(".city-btn").click(function(){
+	 		var city = $(".city").val();
+				var width = $(window).width();
+				if(width <768)
+				{
+						var start = 0;
+						var end = 3;
+					dynamic_load(start,end);
+					function dynamic_load(start,end)
+					{
+						$.ajax({
+							type : "POST",
+							url : "pages/php/short_by_city.php",
+							cache : false,  
+							data : {
+								start : start,
+								end : end,
+								city : city.trim()
+							},
+							success : function(response)
+							{
+								$(".result").html("");
+								var all_data = JSON.parse(response.trim());
+								$(".result").append(all_data);
+							}
+						});
+					}
+					$(window).scroll(function(){
+						var scroll_top = $(window).scrollTop();
+						var browser_height = $(window).height();
+						var webpage_height = $(document).height();
+						var max_height = scroll_top+browser_height;
+						if(max_height >webpage_height-700)
+						{
+							start = start+end;
+							
+							dynamic_load(start,end)
+
+						}
+					});
+				}
+				else if(width >768)
+				{
+					var start = 0;
+					var end = 8;
+					dynamic_load(start,end);
+					function dynamic_load(start,end)
+					{
+						$.ajax({
+							type : "POST",
+							url : "pages/php/short_by_city.php",
+							cache : false,
+							data : {
+								start : start,
+								end : end,
+								city : city.trim()
+							},
+							success : function(response)
+							{
+								$(".result").html("");
+								var all_data = JSON.parse(response.trim());
+								$(".result").append(all_data);
+							}
+						});
+					}
+					$(window).scroll(function(){
+						var scroll_top = $(window).scrollTop();
+						var browser_height = $(window).height();
+						var webpage_height = $(document).height();
+						var max_height = scroll_top+browser_height;
+						if(max_height >webpage_height-200)
+						{
+							start = start+end;
+							dynamic_load(start,end)
+
+						}
+					});
+			 }
+			
+
+	 	});
+	 });
+
+// end short by city
 
 	
 

@@ -1,3 +1,27 @@
+
+<html>
+<style>
+	.search:focus{
+		box-shadow: none !important;
+	}
+	.search{
+		border: none;
+	}
+</style>
+
+<body>
+	
+</body>
+<script>
+	$(document).ready(function(){
+		$(".search-btn").click(function(){
+			var search = $(".search").val();
+			window.location = "http://localhost/bookstore/shop/pages/php/search.php?search="+search;
+		});
+	});
+</script>
+</html>
+
 <?php
 $login_btn = "";
 $signup_btn = "";
@@ -39,9 +63,20 @@ echo '<nav class="navbar navbar-expand-lg sticky-top shadow-sm bg-white">
 	<div class="collapse navbar-collapse" id="navbar-collapse">
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item"><a href="http://localhost/bookstore/shop/index.php" class="nav-link font-weight-bold active">Home</a></li>
+
 		
 		
 		'.$notification_btn.$cart_btn.$login_btn.$signup_btn.'
+		<li class="nav-item">
+		<div class="btn-group">
+		<button class="btn p-0 px-1 m-0" style="border: 2px solid #007bff !important;">
+		<input type="search" class="form-control search p-0 m-0" name="search" placeholder="search here">
+		</button>
+		<button class="btn p-0 m-0 px-2 search-btn" style="border: 2px solid #007bff !important">
+		<i class="fa fa-search text-primary"></i>
+		</button>
+		</div>
+		</li>
 		
 	</ul>
 	</div>

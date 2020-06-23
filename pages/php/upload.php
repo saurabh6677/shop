@@ -15,11 +15,18 @@ $image_type = $file['type'];
 $cat = $_POST['book-cat'];
 $upload_date = date('Y-m-d');
 $username = base64_decode($_COOKIE['_bk_']);
+$get_city = "SELECT city FROM users WHERE email='$username'";
+
+if($response = $db->query($get_city))
+{
+ $data = $response->fetch_assoc();
+ $city = $data['city'];
+}
 $check = "SELECT * FROM products";
 $response = $db->query($check);
 if($response)
 {
-	$store = "INSERT INTO products(title,category,price,thumb,username,upload_date)VALUES('$title','$cat','$price','$file_name','$username','$upload_date')";
+	$store = "INSERT INTO products(title,category,price,thumb,username,upload_date,city)VALUES('$title','$cat','$price','$file_name','$username','$upload_date','$city')";
 	  	$response = $db->query($store);
 	  	if($response)
 	  	{
@@ -96,6 +103,7 @@ else
 	thumb VARCHAR(250),
 	username VARCHAR(150),
 	upload_date DATE,
+	city VARCHAR(100),
 	PRIMARY KEY(id)
 	)";
 	$response = $db->query($create);
@@ -103,7 +111,7 @@ else
 	{
 	  if(mkdir("../../products"))
 	  {
-	  	$store = "INSERT INTO products(title,category,price,thumb,username,upload_date)VALUES('$title','$cat','$price','$file_name','$username','$upload_date')";
+	  	$store = "INSERT INTO products(title,category,price,thumb,username,upload_date,city)VALUES('$title','$cat','$price','$file_name','$username','$upload_date','$city')";
 	  	$response = $db->query($store);
 	  	if($response)
 	  	{
