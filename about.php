@@ -1,3 +1,7 @@
+
+<?php
+require_once("common_files/database/database.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +43,10 @@ require_once("assist/nav.php");
 	<hr>
 </div>
 	</center>
-	<p class="p-3 shadow-lg m-2">We offers most gathering tremendous books in various classification of fields like Biographies, history, religion, self-help, children, investment and management, conputes, engineering, medical, college and school content and we also provides E-books.</p>
-	<p class="p-3 shadow-lg m-2">We mostly welcome every one of the merchant around its area. We will without a doubt give you a stage to sell their products acrros the areas and develope their name and fame. We want to thanks to all for shopping with us. You can keep in touch with us for any new information “email-id”.</p>
+	<hr>
+	<p class="p-3 m-2">We offers most gathering tremendous books in various classification of fields like Biographies, history, religion, self-help, children, investment and management, conputes, engineering, medical, college and school content and we also provides E-books.</p>
+	<hr>
+	<p class="p-3 m-2">We mostly welcome every one of the merchant around its area. We will without a doubt give you a stage to sell their products acrros the areas and develope their name and fame. We want to thanks to all for shopping with us. You can keep in touch with us for any new information “email-id”.</p>
 </div>
 
 

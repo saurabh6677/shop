@@ -53,6 +53,12 @@ require_once("common_files/database/database.php");
 <?php
 require_once("assist/nav.php");
 ?>
+<div class="container-fluid my-3">
+	<div class="row ">
+		<div class="col-md-12 ">
+			<?php require_once("assist/slider.php");?>
+		</div>
+</div>
 <div class="container-fluid my-3 shadow-sm">
 	<div class="row result">
 		

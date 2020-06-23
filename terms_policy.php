@@ -1,3 +1,6 @@
+<?php
+require_once("common_files/database/database.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -5,17 +5,17 @@ echo '
 	<div class="row">
 		<div class="col-md-3">
 			<h5 class="text-dark font-weight-bold">Help</h5>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">About us</a>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">Payment</a>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">Shipping</a>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">FAQ</a>
+			<a href="http://localhost/bookstore/shop/about.php" class="d-block py-2 text-primary font-weight-bold">About us</a>
+			<a href="http://localhost/bookstore/shop/payment_policy.php" class="d-block py-2 text-primary font-weight-bold">Payment</a>
+			<a href="http://localhost/bookstore/shop/shipping_policy.php" class="d-block py-2 text-primary font-weight-bold">Shipping</a>
+			<a href="http://localhost/bookstore/shop/faq.php" class="d-block py-2 text-primary font-weight-bold">FAQ</a>
 		</div>
 		<div class="col-md-3">
 			<h5 class="text-dark font-weight-bold">Policy</h5>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">Return Policy</a>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">Privacy Policy</a>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">Cookies Policy</a>
-			<a href="#" class="d-block py-2 text-primary font-weight-bold">Terms and Condition</a>
+			<a href="http://localhost/bookstore/shop/return_policy.php" class="d-block py-2 text-primary font-weight-bold">Return Policy</a>
+			<a href="http://localhost/bookstore/shop/privacy_policy.php" class="d-block py-2 text-primary font-weight-bold">Privacy Policy</a>
+			<a href="http://localhost/bookstore/shop/Cookies_policy.php" class="d-block py-2 text-primary font-weight-bold">Cookies Policy</a>
+			<a href="http://localhost/bookstore/shop/terms_policy.php" class="d-block py-2 text-primary font-weight-bold">Terms and Condition</a>
 		</div>
 		<div class="col-md-3">
 			<h5 class="text-dark font-weight-bold">Contact</h5>
