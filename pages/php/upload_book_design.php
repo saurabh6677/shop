@@ -12,11 +12,11 @@ if(empty($username))
 						<input type="text" name="book_name" placeholder="book name" class="form-control w-75" required="required" id="book-name">
 					</div>
 					<div class="form-group">
-						<label for="book-cat">Select Category</label>
+						<label for="book-cat">Select Language</label>
 						<select name="book-cat" class="form-control w-75" id="book-cat" required="required">
-							<option>Chosse category</option>
-							<option>Math</option>
-							<option>english</option>
+							<option>Chosse Language</option>
+							<option>Hindi</option>
+							<option>English</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -31,13 +31,30 @@ if(empty($username))
 					<div class="progress upload-bar-con d-none">
 						<div class=" bg-primary  progress-bar upload-bar text-light text-center rounded-lg"></div>
 					</div><br>
+					<div class="shadow-lg preview w-50" align="center" style="margin-left:25%;margin-right:25%;border:3px solid white;">
+					<p class="text-center p-text">Preview</p>
+					</div>
+					<br>
 					<button  type="submit" class="btn btn-primary upload-btn">Upload</button>
 					<div class="upload-notice"></div>
 				</form>';
 				echo '<script>$(document).ready(function(){
+					$("#thumb").on("change", function(){
+						$(".preview").html("");
+						$(".p-text").addClass("d-none");
+						var file = this.files[0];
+						var url = URL.createObjectURL(file);
+						var img = document.createElement("IMG");
+						img.src = url;
+						img.style.width = "100%";
+						$(".preview").append(img);
+
+						});
 		$(".upload-form").submit(function(e){
 			e.preventDefault();
-			$.ajax({
+			if($("#book-cat").val() != "Chosse Language")
+			{
+				$.ajax({
 				type : "POST",
 				url : "pages/php/upload.php",
 				data : new FormData(this),
@@ -79,6 +96,7 @@ if(empty($username))
 							$(".upload-form").trigger("reset");
 							$(".upload-btn").removeAttr("disabled");
 							$(".upload-notice").html("");
+							$(".preview").html("");
 						},2000);
 					}
 					else
@@ -97,7 +115,13 @@ if(empty($username))
 					}
 				}
 			});
-		});
+
+			}
+			else
+			{
+				alert("Chosse Language");
+			}
+					});
 	});</script>';
 
 				?>

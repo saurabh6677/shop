@@ -38,16 +38,36 @@ require_once("assist/nav.php");
 					<input required="required" placeholder="raju@gmail.com" type="text" name="email" class="form-control w-75" id="email">
 				</div>
 				<div class="form-group">
+					<label for="mobile">Mobile<sup style="color: red">*</sup></label>
+					<input required="required" placeholder="8657000000" type="text" name="mobile" class="form-control w-75" id="mobile">
+				</div>
+				<div class="form-group">
+					<label for="pincode">Pincode<sup style="color: red">*</sup></label>
+					<input required="required" placeholder="246701" type="number" name="pincode" class="form-control w-75" id="pincode">
+				</div>
+				<div class="form-group">
 					<label for="password">Password<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id="password">
 				</div>
 				<div class="form-group">
 					<label for="re-password">Re-enter Password<sup style="color: red">*</sup></label>
-					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id=re-password>
+					<input required="required" placeholder="raju@123" type="password" name="re-password" class="form-control w-75" id=re-password>
 				</div>
 				<button class="btn signup-btn btn-primary" type="submit">Signup now</button>    <span class="ml-5 "><a href="http://localhost/bookstore/shop/login.php">If You already have an account ?</a></span>
-				<div class="signup-notice"></div>
+				
 			</form>
+			<div class="otp-box d-none ml-4">
+				<h4 class="text-primary">Verify Your Email</h4>
+				<span class="text-danger">Please check your email to verify your account</span><br><br>	
+				<div class="btn-group  border">
+				<button class="btn">
+				<input type="number" name="otp" class="form-control otp w-100">
+				</button>
+				<button type="btn" class="btn btn-primary verify-btn">Verify</button>
+				<button type="btn" class="btn btn-danger resend-btn">Resend OTP</button>
+				</div>
+			</div>
+			<div class="signup-notice"></div>
 		</div>
 		</div>
 		<div class="col-md-2"></div>

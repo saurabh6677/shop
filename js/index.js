@@ -1,65 +1,196 @@
 
 // signup code start here
 
+
+//t
+
+
+
+
+//t
+
 $(document).ready(function(){
 	$(".signup-form").submit(function(e){
 		e.preventDefault();
-		var password = $("#password").val();
-		if(password.length <= 8)
-		{
-		if($("#password").val() == $("#re-password").val())
-		{
-			$.ajax({
-			type : "POST",
-			url : "pages/php/register.php",
-			data : new FormData(this),
-			processData : false,
-			contentType : false,
-			cache : false,
-			beforeSend : function(){
-				$(".signup-btn").html("Please wait..");
-				$(".signup-btn").attr("disabled","disabled");
-			},
-			success : function(response){
-				$(".signup-btn").html("Signup Now");
-				if(response.trim() == "success")
-				{
-					var div = document.createElement("DIV");
-					div.className = "alert-success w-75 p-3 mt-3";
-					div.innerHTML = "Thank you for signup with us";
-					$(".signup-notice").append(div);
-					setTimeout(function(){
-						$(".signup-notice").html("");
-					},2000);
-					$(".signup-btn").removeAttr("disabled");
-					$(".signup-form").trigger('reset');
-				}
-				else
-				{
-					var div = document.createElement("DIV");
-					div.className = "alert-success w-75 p-3 mt-3";
-					div.innerHTML = response;
-					$(".signup-notice").append(div);
-					setTimeout(function(){
-						$(".signup-notice").html("");
-					},2000);
-					$(".signup-btn").removeAttr("disabled");
-					$(".signup-form").trigger('reset');	
-				}
-			}
-
-		});
-		}
-		else
-		{
-			alert("password not match");
-		}
-		}
-		else
-		{
-			alert("password less then 8 digit");
-		}
+		var pincode = $("#pincode").val();
+ 				$.ajax({
+ 					type : "GET",
+ 					url : "https://api.postalpincode.in/pincode/"+Number(pincode),
+ 					beforeSend : function(){
+ 						$(".signup-btn").html("Please wait..");
+ 					},
+ 					success : function(response){
+ 						
+ 						var status = response[0].Status;
+ 					
+ 						if(status == "Success")
+ 						{
+ 							var length = response[0].PostOffice.length-1;
+ 							var data = response[0].PostOffice[length];
+ 							var country = data.Country;
+ 							var state = data.State;
+ 							var district = data.District;
+ 							var city = data.Block;
+ 							
 		
+							var password = $("#password").val();
+							if(password.length <= 8)
+							{
+							if($("#password").val() == $("#re-password").val())
+							{
+								var email = $("#email").val();
+								var formdata = new FormData();
+								
+								formdata.append("fullname", $("#fullname").val());
+								formdata.append("email", $("#email").val());
+								formdata.append("mobile", $("#mobile").val());
+								formdata.append("password", $("#password").val());
+								formdata.append("re-password", $("#re-password").val());
+								formdata.append("country", country);
+								formdata.append("state", state);
+								formdata.append("district", district);
+								formdata.append("city", city);
+								formdata.append("pincode", pincode);
+								$.ajax({
+								type : "POST",
+								url : "pages/php/register.php",
+								data : formdata,
+								processData : false,
+								contentType : false,
+								cache : false,
+								beforeSend : function(){
+									$(".signup-btn").html("Please wait..");
+									$(".signup-btn").attr("disabled","disabled");
+								},
+								success : function(response){
+									$(".signup-btn").html("Signup Now");
+									if(response.trim() == "success")
+									{
+										var div = document.createElement("DIV");
+										div.className = "alert-success w-75 p-3 mt-3";
+										div.innerHTML = "Thank you for signup with us , Please wait to verify your email";
+										$(".signup-notice").append(div);
+										setTimeout(function(){
+											$(".signup-notice").html("");
+											$(".signup-form").addClass("d-none");
+											// verify code
+
+												
+												$(".otp-box").removeClass("d-none");
+												$(".verify-btn").click(function(){
+													var otp = $(".otp").val();
+													$.ajax({
+														type : "POST",
+														url : "pages/php/verify.php",
+														data : {
+															otp : Number(otp),
+															email : email
+														},
+														beforeSend : function()
+														{
+															$(".verify-btn").html("Please wait..");
+															$(".verify-btn").attr("disabled","disabled");
+														},
+														success : function(response){
+															$(".verify-btn").html("Verify");
+															if(response.trim() =="success")
+															{
+																window.location = "http://localhost/bookstore/shop/index.php";
+
+
+															}
+															else
+															{
+																var div = document.createElement("DIV");
+																	div.className = "alert-warning w-75 mt-3 p-3";
+																	div.innerHTML = response;
+																	$(".login-notice").append(div);
+																	setTimeout(function(){
+
+																	$(".signup-notice").html("");
+																	var otp = $(".otp").val("");
+																	$(".verify-btn").removeAttr("disabled");
+																			},2000);	
+															}
+														}
+													});
+												});
+												//end verify otp code
+												//resend otp 
+												$(".resend-btn").click(function(){
+													$.ajax({
+														type : "POST",
+														url : "pages/php/resend.php",
+														data : {
+															email : email
+														},
+														beforeSend : function()
+														{
+															$(".resend-btn").html("please wait...");
+															$(".resend-btn").attr("disabled","disabled");
+														},
+														success : function(response)
+														{
+															$(".resend-btn").html("Resend");
+															$(".resend-btn").removeAttr("disabled");
+															var div = document.createElement("DIV");
+																	div.className = "alert-warning w-75 mt-3 p-3";
+																	div.innerHTML = response;
+																	$(".login-notice").append(div);
+																	setTimeout(function(){
+																	$(".login-notice").html("");
+																	},2000);
+														}
+													});
+												});
+
+												// end resend otp code
+
+										},3000);
+										$(".signup-btn").removeAttr("disabled");
+										$(".signup-form").trigger('reset');
+									}
+									else
+									{
+										var div = document.createElement("DIV");
+										div.className = "alert-danger w-75 p-3 mt-3";
+										div.innerHTML = response;
+										$(".signup-notice").append(div);
+										setTimeout(function(){
+											$(".signup-notice").html("");
+										},6000);
+										$(".signup-btn").removeAttr("disabled");
+										$(".signup-form").trigger('reset');	
+									}
+								}
+
+							});
+							}
+							else
+							{
+								alert("password not match");
+							}
+							}
+							else
+							{
+								alert("password less then 8 digit");
+							}
+ 						}
+ 						else
+ 						{
+ 							var div = document.createElement("DIV");
+										div.className = "alert-danger w-75 p-3 mt-3";
+										div.innerHTML = "enter a valid pin code";
+										$(".signup-notice").append(div);
+										setTimeout(function(){
+											$(".signup-notice").html("");
+										},6000);
+										$(".signup-btn").removeAttr("disabled");
+										$(".signup-form").trigger('reset');
+										$(".signup-btn").html("Signup now");	
+ 						}
+ 					}
+ 				});
 	});
 
 });
@@ -426,6 +557,7 @@ $(document).ready(function(){
 				url : link,
 				success : function(response){
 					$(".dynamic-result").html(response);
+					
 				}
 			});
 		});
@@ -471,3 +603,89 @@ $(document).ready(function(){
 			});
 		
 	});
+
+// dynamic code
+
+
+	$(document).ready(function(){
+		var width = $(window).width();
+		if(width <768)
+		{
+				var start = 0;
+				var end = 3;
+			dynamic_load(start,end);
+			function dynamic_load(start,end)
+			{
+				$.ajax({
+					type : "POST",
+					url : "pages/php/display_products.php",
+					cache : false,
+					data : {
+						start : start,
+						end : end
+					},
+					success : function(response)
+					{
+						
+						var all_data = JSON.parse(response.trim());
+						$(".result").append(all_data);
+					}
+				});
+			}
+			$(window).scroll(function(){
+				var scroll_top = $(window).scrollTop();
+				var browser_height = $(window).height();
+				var webpage_height = $(document).height();
+				var max_height = scroll_top+browser_height;
+				if(max_height >webpage_height-700)
+				{
+					start = start+end;
+					
+					dynamic_load(start,end)
+
+				}
+			});
+		}
+		else if(width >768)
+		{
+			var start = 0;
+			var end = 8;
+			dynamic_load(start,end);
+			function dynamic_load(start,end)
+			{
+				$.ajax({
+					type : "POST",
+					url : "pages/php/display_products.php",
+					cache : false,
+					data : {
+						start : start,
+						end : end
+					},
+					success : function(response)
+					{
+						
+						var all_data = JSON.parse(response.trim());
+						$(".result").append(all_data);
+					}
+				});
+			}
+			$(window).scroll(function(){
+				var scroll_top = $(window).scrollTop();
+				var browser_height = $(window).height();
+				var webpage_height = $(document).height();
+				var max_height = scroll_top+browser_height;
+				if(max_height >webpage_height-200)
+				{
+					start = start+end;
+					dynamic_load(start,end)
+
+				}
+			});
+	 }
+	});
+
+
+
+	
+
+	

@@ -16,7 +16,37 @@ require_once("common_files/database/database.php");
 	<script src="common_files/js/jquery.js"></script>
 	<script src="common_files/js/popper.js"></script>
 	<script src="common_files/js/bootstrap.min.js"></script>
-	
+	<script src="js/index.js"></script>
+	<style>
+		/* .buy-btn{
+			
+			background: deeppink;
+			border : 2px solid deeppink !important;
+			border-radius: 20px 0px 20px 0px !important;
+			font-weight: bold !important;
+			color: #fff !important;
+		}
+		.buy-btn:hover{
+			background: #fff !important;
+			border : 2px solid deeppink !important;
+			color: deeppink !important;
+		}
+		.cart-btn{
+			
+			background: blue;
+			border : 2px solid blue !important;
+			border-radius: 20px 0px 20px 0px !important;
+			font-weight: bold !important;
+			color: #fff !important;
+		}
+		.cart-btn:hover{
+			background: #fff !important;
+			border : 2px solid blue !important;
+			color: blue !important;
+		}
+
+		*/
+	</style>
 </head>
 <body>
 
@@ -24,35 +54,16 @@ require_once("common_files/database/database.php");
 require_once("assist/nav.php");
 ?>
 <div class="container-fluid my-3 shadow-sm">
-	<div class="row">
-<?php
-$get_data = "SELECT * FROM products";
-$response = $db->query($get_data);
-if($response)
-{
-	while($data = $response->fetch_assoc())
-	{
-		echo "<div class='col-md-3  p-3'>
-		<div class='shadow-lg pb-3' align='center'>
-		<img src='products/".$data['thumb']."' alt='".$data['title']."'>
-		<p class='text-center text-uppercase font-weight-bold p-0 m-0'>".$data['category']."</p>
-		<p class='text-center text-capitalize font-weight-bold p-0 m-0'>Title : ".$data['title']."</p>
-		<p class='text-center p-0 m-0'>Price  : ".$data['price']." <i class='fa fa-rupee'></i></p>
-		<p class='text-center p-0 m-0'>Upload date ".$data['upload_date']."</p>
-		<button class='btn btn-primary'><i class='fa fa-shopping-bag'></i> Buy Now</button>
-		<button class='btn btn-danger'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
-		</div>
-		</div>";
-	}
-}
-
-?>
+	<div class="row result">
+		
 </div>
-<div>
+</div>
 <?php
 require_once("assist/footer.php");
 
 ?>
-</body>
+<script>
+</script>
+</body> 
 </html>
 
