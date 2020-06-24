@@ -213,7 +213,7 @@ if(empty($username))
 						type : "POST",
 						url : "http://localhost/bookstore/shop/pages/php/read_notification.php",
 						data : {
-							id : id,
+							id : btoa(id),
 							status : btoa(status),
 							r_comment : r_comment
 						},

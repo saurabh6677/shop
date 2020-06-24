@@ -11,6 +11,7 @@ if(empty($username))
 $id = base64_decode($_POST['id']);
 $status = base64_decode($_POST['status']);
 $r_comment = $_POST['r_comment'];
+
 $r_mobile = "";
 $get_data = "SELECT mobile FROM users WHERE email='$username'";
 						$response = $db->query($get_data);
@@ -23,7 +24,7 @@ $get_data = "SELECT mobile FROM users WHERE email='$username'";
 
 if($r_comment !="")
 {
-	$update = "UPDATE bid SET status='$status',r_comment='$r_comment',r_mobile='$r_mobile' WHERE id='$id' AND resever='$username'";
+	$update = "UPDATE bid SET status='$status',resever_comment='$r_comment',r_mobile='$r_mobile' WHERE id='$id' AND resever='$username'";
 	$response = $db->query($update);
 	if($response)
 	{
@@ -31,7 +32,7 @@ if($r_comment !="")
 	}
 	else
 	{
-		echo "somthing went wrong";
+		echo $status;
 	}
 }
 else
