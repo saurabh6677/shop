@@ -105,7 +105,7 @@ if(empty($username))
 						$resever_name = $data['resever_name'];
 						$sander_name = $data['sender_name'];
 						$comment = $data['comment'];
-						$r_comment = $data['r_comment'];
+						$r_comment = $data['resever_comment'];
 						$r_mobile = $data['r_mobile'];
 						$id = $data['id'];
 						$product_id = $data['product_id'];
