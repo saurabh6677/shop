@@ -138,7 +138,7 @@ require_once("../../assist/footer.php");
 			e.preventDefault();
 			$.ajax({
 				type : "POST",
-				url : "prposel.php",
+				url : "http://localhost/bookstore/shop/pages/php/prposel.php",
 				data : new FormData(this),
 				processData : false,
 				contentType : false,
@@ -173,6 +173,7 @@ require_once("../../assist/footer.php");
 							$(".prposel-form").trigger("reset");
 						}, 4000);	
 					}
+					
 				}
 			});
 		});

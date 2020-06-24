@@ -1,5 +1,0 @@
-AuthName "assist"
-AuthType Basic
-AuthUserFile c:/wamp64/www/bookstore/shop/assist/.htpasswd
-
-Require valid-user

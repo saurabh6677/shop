@@ -1,11 +1,6 @@
 <?php
 require_once("../../common_files/database/database.php");
 $username = base64_decode($_COOKIE['_bk_']);
-if(empty($username))
-{
-	header("Location: http://localhost/bookstore/shop/login.php");
-	exit;
-}
 
 $price = $_POST['price'];
 $comment = addslashes($_POST['comment']);

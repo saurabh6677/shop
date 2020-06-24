@@ -29,6 +29,7 @@ $username = "";
 $notification_btn = "";
 
 
+
 if(!empty($_COOKIE['_bk_']))
 {
 	$username = base64_decode($_COOKIE['_bk_']);
@@ -36,24 +37,29 @@ if(!empty($_COOKIE['_bk_']))
 	 $signup_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/pages/php/logout.php" class="nav-link font-weight-bold"><i class="fa fa-sign-out"></i> Logout</a></li>';
 	 $get_cart = "SELECT COUNT(id) AS cno FROM cart WHERE username='$username'";
 	 $response_cart = $db->query($get_cart);
-	 if($response_cart->num_rows !=0)
-	 {
-	 	$data_cart = $response_cart->fetch_assoc();
-	 	$c_no = $data_cart['cno'];
-	 	 
-	 	 if($c_no !=0)
-	 	 {
-	 	 	$cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1">'.$c_no.'</sup> Cart</a></li>';
-	 	 }
-
-		 else 
+		 if($response_cart && $response_cart->num_rows !=0)
 		 {
-			 $cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1"></sup> Cart</a></li>';
+
+		 	$data_cart = $response_cart->fetch_assoc();
+		 	$c_no = $data_cart['cno'];
+		 	 
+		 	 if($c_no !=0)
+		 	 {
+		 	 	$cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1">'.$c_no.'</sup> Cart</a></li>';
+		 	 }
+
+			 else 
+			 {
+				 $cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1"></sup> Cart</a></li>';
+			 }
 		 }
-	 }
+
+		$cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1"></sup> Cart</a></li>';
 	 
 	 $check_not = "SELECT COUNT(id) AS noti FROM bid WHERE resever='$username' AND status='unread'";
 		$response = $db->query($check_not);
+		if($response)
+		{
 		$data = $response->fetch_assoc();
 			$num = $data['noti'];
 		if($num !=0)
@@ -66,6 +72,7 @@ if(!empty($_COOKIE['_bk_']))
 			$notification_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/notification" class="nav-link font-weight-bold"><i class="fa fa-bell"></i> Notifications</a></li>';
 			
 		}
+	}
 }
 else
 {

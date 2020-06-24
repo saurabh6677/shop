@@ -7,5 +7,5 @@ RewriteRule ^books/(.*)$    pages/php/buy_product_design.php?product_id=$1
 
 RewriteRule ^search/([0-9a-zA-Z]+)$   pages/php/search.php?search=$1
 RewriteRule ^([a-z]+)$ $.php
-ErrorDocument 404 http://localhost/bookstore/shop/error
-ErrorDocument 403 http://localhost/bookstore/shop/error
+ErrorDocument 404 http://blogbabaji.com/error
+ErrorDocument 403 http://blogbabaji.com/error

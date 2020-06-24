@@ -9,7 +9,7 @@ if(empty($username))
 }
 				$my_books = "SELECT * FROM products WHERE username='$username'";
 				$response = $db->query($my_books);
-				if($response->num_rows != 0)
+				if($response && $response->num_rows != 0)
 				{
 					$date = "";
 					while($data = $response->fetch_assoc())

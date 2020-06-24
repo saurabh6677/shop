@@ -39,7 +39,7 @@ require_once("../../assist/nav.php");
 	$get_id = "SELECT product_id FROM cart WHERE username='$username' ORDER BY id DESC";
 	$response = $db->query($get_id);
 	$msg = "";
-	if($response->num_rows !=0)
+	if($response && $response->num_rows !=0)
 	{
 		while($data = $response->fetch_assoc())
 		{
