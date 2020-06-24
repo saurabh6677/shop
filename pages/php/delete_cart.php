@@ -8,19 +8,18 @@ if(empty($username))
 	exit;
 }
 
-$id = base64_decode($_POST['id']);
-$thumb = $_POST['thumb'];
-$delete = "DELETE FROM products WHERE id='$id' AND username='$username'";
+$product_id = base64_decode($_POST['product_id']);
+
+$delete = "DELETE FROM cart WHERE username='$username' AND product_id='$product_id'";
 $response = $db->query($delete);
 if($response)
 {
-
-   echo "success";
-   
+	echo "success";
 }
 else
 {
-	echo "this product not exits";
+	echo "unable to delete";
 }
+
 
 ?>

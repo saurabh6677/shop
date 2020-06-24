@@ -16,7 +16,7 @@
 	$(document).ready(function(){
 		$(".search-btn").click(function(){
 			var search = $(".search").val();
-			window.location = "http://localhost/bookstore/shop/pages/php/search.php?search="+search;
+			window.location = "http://localhost/bookstore/shop/search/"+search.trim();
 		});
 	});
 </script>
@@ -32,9 +32,26 @@ $notification_btn = "";
 if(!empty($_COOKIE['_bk_']))
 {
 	$username = base64_decode($_COOKIE['_bk_']);
-	 $login_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/profile.php" class="nav-link font-weight-bold"><i class="fa fa-tachometer"></i> Dashboard</a></li>';
+	 $login_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/dashbord" class="nav-link font-weight-bold"><i class="fa fa-tachometer"></i> Dashboard</a></li>';
 	 $signup_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/pages/php/logout.php" class="nav-link font-weight-bold"><i class="fa fa-sign-out"></i> Logout</a></li>';
-	 $cart_btn = '<li class="nav-item"><a href="#" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i> Cart</a></li>';
+	 $get_cart = "SELECT COUNT(id) AS cno FROM cart WHERE username='$username'";
+	 $response_cart = $db->query($get_cart);
+	 if($response_cart->num_rows !=0)
+	 {
+	 	$data_cart = $response_cart->fetch_assoc();
+	 	$c_no = $data_cart['cno'];
+	 	 
+	 	 if($c_no !=0)
+	 	 {
+	 	 	$cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1">'.$c_no.'</sup> Cart</a></li>';
+	 	 }
+
+		 else 
+		 {
+			 $cart_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/cart" class="nav-link font-weight-bold"><i class="fa fa-shopping-cart text-primary"></i><sup class="cart-sup text-danger ml-1"></sup> Cart</a></li>';
+		 }
+	 }
+	 
 	 $check_not = "SELECT COUNT(id) AS noti FROM bid WHERE resever='$username' AND status='unread'";
 		$response = $db->query($check_not);
 		$data = $response->fetch_assoc();
@@ -42,18 +59,18 @@ if(!empty($_COOKIE['_bk_']))
 		if($num !=0)
 		{
 			
-			$notification_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/pages/php/notification_main.php" class="nav-link font-weight-bold"><i class="fa fa-bell"></i><sup class="text-danger">'.$num.'</sup> Notifications</a></li>';
+			$notification_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/notification" class="nav-link font-weight-bold"><i class="fa fa-bell"></i><sup class="text-danger">'.$num.'</sup> Notifications</a></li>';
 		}
 		else
 		{
-			$notification_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/pages/php/notification_main.php" class="nav-link font-weight-bold"><i class="fa fa-bell"></i> Notifications</a></li>';
+			$notification_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/notification" class="nav-link font-weight-bold"><i class="fa fa-bell"></i> Notifications</a></li>';
 			
 		}
 }
 else
 {
-	 $login_btn = '<li class="nav-item"><a href="login.php" class="nav-link font-weight-bold">Login</a></li>';
-	 $signup_btn = '<li class="nav-item"><a href="signup.php" class="nav-link font-weight-bold">Signup</a></li>';
+	 $login_btn = '<li class="nav-item"><a href="http://localhost/bookstore/shop/login.php" class="nav-link font-weight-bold">Login</a></li>';
+	 $signup_btn = '<li class="nav-item"><a href=http://localhost/bookstore/shop/signup.php" class="nav-link font-weight-bold">Signup</a></li>';
 	 $cart_btn = "";
 }
 

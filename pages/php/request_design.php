@@ -35,7 +35,7 @@ if(empty($username))
 						<p class="text-success">Mr. '.$sander_name.' request you to buy "'.$title.'" Book From You</p>
 						<div class="d-lg-flex">
 							<div class="media mb-3">
-							<img src="products/'.$thumb.'" width="80%" class="shadow-lg" style="border:5px solid white">
+							<img src=".http://localhost/bookstores/shop/products/'.$thumb.'" width="80%" class="shadow-lg" style="border:5px solid white">
 							</div>
 							<div class="media-body ml-2">
 							<p>Mr. '.$sander_name.' say\'s to You <br>'.$comment.' </p><br>
@@ -56,7 +56,7 @@ if(empty($username))
 						<p class="text-success">Mr. '.$sander_name.' request you to buy "'.$title.'" Book From You</p>
 						<div class="d-flex">
 							<div class="media">
-							<img src="products/'.$thumb.'" width="80%" class="shadow-lg" style="border:5px solid white">
+							<img src="http://localhost/bookstores/shop/products/'.$thumb.'" width="80%" class="shadow-lg" style="border:5px solid white">
 							</div>
 							<div class="media-body ml-2">
 							<p>Mr. '.$sander_name.' say\'s to You <br>'.$comment.' </p><br>

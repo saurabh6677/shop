@@ -89,7 +89,7 @@ require_once("assist/nav.php");
 		</div>
 		<hr>
 		<p>Filter By Price</p>
-		<div class="btn-group w-100">
+		<div class="btn-group w-100 mb-3">
 			<button class="btn p-0 w-25"><input type="number" name="price" placeholder="min" class="form-control min"></button>
 			<button class="btn p-0 w-25"><input type="number" name="price" placeholder="max" class="form-control max"></button>
 			<button class="btn p-0 w-25 price-btn btn-danger">GET</button>
@@ -102,6 +102,7 @@ require_once("assist/footer.php");
 
 ?>
 <script>
+
 </script>
 </body> 
 </html>

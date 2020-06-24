@@ -22,7 +22,7 @@ if(empty($username))
 								<p class='text-center text-capitalize font-weight-bold p-0 m-0'>Title : ".$data['title']."</p>
 								<p class='text-center p-0 m-0'>Price  : ".$data['price']." <i class='fa fa-rupee'></i></p>
 								<p class='text-center p-0 m-0'>Upload date ".$upload_date."</p>
-								<button class='btn my-2 btn-danger delete-btn' product-id='".$data['id']."' thumb='products/".$data['thumb']."'><i class='fa fa-trash' ></i> Delete</button>
+								<button class='btn d-none my-2 btn-danger delete-btn' product-id='".base64_encode($data['id'])."' thumb='products/".$data['thumb']."'><i class='fa fa-trash' ></i> Delete</button>
 								
 						</div>";
 					}

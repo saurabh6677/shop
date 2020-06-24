@@ -12,7 +12,7 @@ if($response_sender_name = $db->query($get_you_name))
 	$fullname_data =  $response_sender_name->fetch_assoc();
 	$fullname_sender =  $fullname_data['fullname'];
 }
-$product_id = $_GET['product_id'];
+$product_id = base64_decode($_GET['product_id']);
 $title = "";
 $category = "";
 $price = "";
@@ -89,7 +89,7 @@ require_once("../../assist/nav.php");
 	<div class="col-md-4 p-3 d-flex justify-content-center bg-white">
 		
 		<div class="media">
-		<img src="../../products/<?php echo $thumb;?>." class="shadow-lg" style="border:5px solid #fff">
+		<img src="http://localhost/bookstore/shop/products/<?php echo $thumb;?>" class="shadow-lg" style="border:5px solid #fff">
 		</div>
 		</div>
 		<div class="col-md-4 p-4 mb-3 d-flex justify-content-center">
