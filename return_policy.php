@@ -5,7 +5,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -29,8 +29,8 @@ require_once("common_files/database/database.php");
 require_once("assist/nav.php");
 ?>
 
-<h2 class="text-center pt-3">Return Policy</h2>
-<div class="p-3 shadow-lg m-2" style="justify-content:">
+<h2 class="text-center  bg-primary text-light">Return Policy</h2>
+<div class="p-lg-4 p-2 shadow-lg m-2" style="justify-content:">
 	<p>Return Policy is provided by respective seller under this policy seller decides which product is exchangable, returnable, replacementable or refundable to you. All products are listed in spacial catogry so every product may not have same return policy. So all products have different return policy and that is provided on thier product pages</p>
 </div>
 

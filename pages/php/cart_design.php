@@ -44,7 +44,7 @@ require_once("../../assist/nav.php");
 		while($data = $response->fetch_assoc())
 		{
 			$product_id = $data['product_id'];
-			$get_products = "SELECT * FROM products WHERE id='$product_id' AND username='$username'";
+			$get_products = "SELECT * FROM products WHERE id='$product_id'";
 			$response_pro = $db->query($get_products);
 			if($response_pro->num_rows != 0)
 			{

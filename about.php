@@ -6,7 +6,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -34,7 +34,7 @@ require_once("assist/nav.php");
 <div class="text-center" style="justify-content:">
 	<center>
 		<div class="bg-info w-75 rounded-lg p-4">
-		<div class="bg-primary w-50 text-light text-center shadow-lg p-2" id="power" style="border: 1px dotted white;">Establishment year of your bookstore</div>
+		<div class="bg-primary w-75 text-light text-center shadow-lg p-1" id="power" style="border: 1px dotted white;">Establishment year of your bookstore</div>
 	</div>
 	<div>
 	<p class="info">Launched in 1st July 2020 during covid 19</p>

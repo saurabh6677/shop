@@ -1,41 +1,79 @@
 <?php
-
-require_once("../../common_files/database/database.php");
-$email = $_POST['email'];
-$otp = $_POST['otp'];
-$check = "SELECT * FROM users WHERE email='$email'";
-$response = $db->query($check);
-if($response->num_rows !=0)
-{
-  $data = $response->fetch_assoc();
-
-  $main_otp = $data['otp'];
-  if($main_otp == $otp)
-  {
-  	$update = "UPDATE users SET status='active' WHERE email='$email' AND otp='$otp'";
-  	$response = $db->query($update);
-  	if($response)
-  	{
-  		
-      $username = base64_encode($email);
-      $time = time()+(60*60*24*365);
-
-      setcookie("_bk_",$username,$time,"/");
-  		echo "success";
-  	}
-  	else
-  	{
-  		echo "try agin later";
-  	}
-  }
-  else
-  {
-  	echo "wrong otp";
-  }
+session_start();
+class db{
+	private $db;
+	function database()
+	{
+		$this->db = new mysqli("localhost","root","","bookstore");
+		if(!$this->db->connect_error)
+		{
+			return $this->db;
+		}
+		else
+		{
+			echo "conaction faild";
+		}
+	}
 }
-else
-{
-  echo $email;
+
+
+class main{
+	private $db;
+	private $email;
+	private $otp;
+	private $query;
+	private $data;
+	private $otp_o;
+	private $active;
+	private $time;
+	private $username;
+	function __construct()
+	{
+		$this->db = new db();
+		$this->db = $this->db->database();
+		$this->email = $_SESSION['email'];
+		$this->otp = trim($_POST['otp']);
+		$this->otp = htmlspecialchars($this->otp);
+		$this->otp = mysqli_real_escape_string($this->db,$this->otp);
+
+		$this->query = $this->db->prepare("SELECT * FROM users WHERE email=?");
+		$this->query->bind_param('s',$this->email);
+		$this->query->execute();
+		$this->data = $this->query->get_result();
+		$this->otp_o = $this->data->fetch_assoc();
+		$this->otp_o =  $this->otp_o['otp'];
+		$this->active = "active";
+		if($this->otp == $this->otp_o)
+		{
+			$this->query = $this->db->prepare("UPDATE users SET status=? WHERE email=? AND otp=?");
+			$this->query->bind_param('ssi',$this->active,$this->email,$this->otp);
+			$this->query->execute();
+			if($this->query->affected_rows != 0)
+			{
+				echo "success";
+				$this->username = base64_encode($this->email);
+      			$this->time = time()+(60*60*24*365);
+
+      			setcookie("_bk_",$this->username,$this->time,"/");
+			}
+			else
+			{
+				echo "something went wrong";
+			}
+		}
+		else
+		{
+			echo "Wrong otp";
+		}
+
+	}
 }
+
+
+new main();
+
+
+
+
 
 ?>

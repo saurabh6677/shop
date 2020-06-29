@@ -5,7 +5,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -29,7 +29,7 @@ require_once("common_files/database/database.php");
 require_once("assist/nav.php");
 ?>
 
-<h5 class="text-left p-3">Payment</h5>
+<h5 class="text-left p-3 bg-success text-light text-center">Payment Policy</h5>
 <div class="text-left p-3 shadow-lg m-3 rounded-lg" style="justify-content:">
 	<h6>How do I pay for a bookstore ?</h6>
 	<p>Bookstore provides you multiple methods to pay. Whatever via you want to pay online payment. You can fully trust on me because bookstore use trusted payment gateway secure encripted technology to keep your transaction details confidential at all times.</p>

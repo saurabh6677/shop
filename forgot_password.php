@@ -7,7 +7,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -26,8 +26,8 @@ require_once("assist/nav.php");
 <div class="container-fluid my-4">
 	<div class="row">
 		<div class="col-md-2"></div>
-		<div class="col-md-8" >
-			<div class="shadow-lg py-3 m-3 rounded-lg" style="border-left: 5px solid blue">
+		<div class="col-md-8 p-0 m-0">
+			<div class="shadow-lg py-3 m-lg-3 rounded-lg" style="border-left: 5px solid blue">
 			
 			<div class="ml-4 form-group email-box">
 				<label for="email">Enter your email</label>

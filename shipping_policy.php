@@ -5,7 +5,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -29,8 +29,8 @@ require_once("common_files/database/database.php");
 require_once("assist/nav.php");
 ?>
 
-<h5 class="text-left p-3">Shipping</h5>
-<div class="text-left p-3 shadow-lg m-3 rounded-lg" style="justify-content:">
+<h5 class="text-left p-3 bg-warning text-light text-center">Shipping</h5>
+<div class="text-left p-2 shadow-lg m-2 rounded-lg" style="justify-content:">
 	<h6>What are the delivery charges ?</h6>
 	<p>Delivery charges depends on seller.</p>
 	<h6>What is the estimated delivery time ?</h6>

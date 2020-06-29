@@ -1,18 +1,25 @@
 <?php
 require_once("../../common_files/database/database.php");
 $username = base64_decode($_COOKIE['_bk_']);
+$username = htmlspecialchars($username);
+$username = mysqli_real_escape_string($db,$username);
 if(empty($username))
 {
 	header("Location: http://localhost/bookstore/shop/login.php");
 	exit;
 }
-$get_you_name = "SELECT fullname FROM users WHERE email='$username'";
-if($response_sender_name = $db->query($get_you_name))
+$get_you_name = $db->prepare("SELECT fullname FROM users WHERE email=?");
+$get_you_name->bind_param('s',$username);
+$get_you_name->execute();
+$response_sender_name = $get_you_name->get_result();
+if($response_sender_name)
 {
 	$fullname_data =  $response_sender_name->fetch_assoc();
 	$fullname_sender =  $fullname_data['fullname'];
 }
 $product_id = base64_decode($_GET['product_id']);
+$product_id = htmlspecialchars($product_id);
+$product_id = mysqli_real_escape_string($db,$product_id);
 $title = "";
 $category = "";
 $price = "";
@@ -26,9 +33,11 @@ $pincode = "";
 $district = "";
 $address = "";
 $uploaded_date = "";
-$get_details = "SELECT * FROM products WHERE id='$product_id'";
-$response = $db->query($get_details);
-if($response)
+$get_details = $db->prepare("SELECT * FROM products WHERE id=?");
+$get_details->bind_param('i',$product_id);
+$get_details->execute();
+$response = $get_details->get_result();
+if($response->num_rows !=0)
 {
  $data = $response->fetch_assoc();
  $title = $data['title'];
@@ -55,7 +64,7 @@ if($response)
 }
 else
 {
-	header("Location: http://localhost/bookstore/shop/index.php");
+	header("Location:http://localhost/bookstore/shop/error");
 	exit;
 }
 
@@ -149,7 +158,7 @@ require_once("../../assist/footer.php");
 				},
 				success : function(response)
 				{
-					if(response.trim() != "Sorry something went wrong")
+					if(response.trim() != "Sorry something went wrong else You are the owner this book, All field required")
 					{
 						$(".send-btn").html("Send Now");
 						$(".send-btn").removeAttr("disabled");

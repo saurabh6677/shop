@@ -28,13 +28,14 @@ if(empty($username))
 						
 						<input type="file" accept="image" name="thumb" class="form-control w-75" required="required" id="thumb">
 					</div>
-					<div class="progress upload-bar-con d-none">
-						<div class=" bg-primary  progress-bar upload-bar text-light text-center rounded-lg"></div>
-					</div><br>
+					<br>
 					<div class="shadow-lg preview w-50" align="center" style="margin-left:25%;margin-right:25%;border:3px solid white;">
 					<p class="text-center p-text">Preview</p>
 					</div>
 					<br>
+					<div class="progress upload-bar-con d-none">
+						<div class=" bg-primary  progress-bar upload-bar text-light text-center rounded-lg"></div>
+					</div><br>
 					<button  type="submit" class="btn btn-primary upload-btn">Upload</button>
 					<div class="upload-notice"></div>
 				</form>';
@@ -111,6 +112,7 @@ if(empty($username))
 							$(".upload-form").trigger("reset");
 							$(".upload-btn").removeAttr("disabled");
 							$(".upload-notice").html("");
+							$(".preview").html("");
 						},2000);
 					}
 				}

@@ -7,7 +7,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -16,7 +16,7 @@ require_once("common_files/database/database.php");
 	<script src="common_files/js/jquery.js"></script>
 	<script src="common_files/js/popper.js"></script>
 	<script src="common_files/js/bootstrap.min.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/login.js"></script>
 </head>
 <body>
 <?php
@@ -26,9 +26,11 @@ require_once("assist/nav.php");
 <div class="container-fluid my-4">
 	<div class="row">
 		<div class="col-md-2"></div>
-		<div class="col-md-8" >
-			<div class="shadow-lg py-3 m-3 rounded-lg" style="border-left: 5px solid blue">
-			<form class="login-form pl-4">
+		<div class="col-md-8 p-0 m-0" >
+
+			<div class="shadow-lg  py-3 m-lg-3 rounded-lg" style="border-left: 5px solid blue">
+				<h4 class="text-center text-danger mb-2">Login Form</h4>
+			<form class="login-form  pl-4">
 				<div class="form-group">
 					<label for="email">Email<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@gmail.com" type="email" name="email" class="form-control w-75" id="email">
@@ -37,22 +39,22 @@ require_once("assist/nav.php");
 					<label for="password">Password<sup style="color: red">*</sup></label>
 					<input required="required" placeholder="raju@123" type="password" name="password" class="form-control w-75" id="password">
 				</div>
-				<button class="btn login-btn btn-primary" type="submit">Login Now</button>        <span class="ml-5 "><a href="http://localhost/bookstore/shop/forgot_password.php">Forgot password ?</a></span> 
+				<button class="btn login-btn btn-primary" type="submit">Login Now</button>        <span class="ml-lg-5 "><a href="http://localhost/bookstore/shop/forgot_password.php">Forgot password ?</a></span> 
 				<p class="ml-auto mt-3"><a href="http://localhost/bookstore/shop/signup.php">You don't have account ?</a></p>
 				
 			</form>
-			<div class="login-notice"></div>
 			<div class="otp-box d-none ml-4">
 				<h4 class="text-primary">Verify Your Email</h4>
 				<span class="text-danger">Please check your email to verify your account</span><br><br>	
 				<div class="btn-group  border">
 				<button class="btn">
-				<input type="number" name="otp" class="form-control otp w-100">
+				<input type="number" name="otp" placeholder="enter otp" class="form-control otp w-100">
 				</button>
 				<button type="btn" class="btn btn-primary verify-btn">Verify</button>
 				<button type="btn" class="btn btn-danger resend-btn">Resend OTP</button>
 				</div>
 			</div>
+			<div class="login-notice"></div>
 		</div>
 		</div>
 		<div class="col-md-2"></div>

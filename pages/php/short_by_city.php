@@ -30,7 +30,9 @@ if($response)
 		</div>";
 		array_push($result, $data);
 	}
-	$script = '<script>$(document).ready(function(){
+	
+}
+$script = '<script>$(document).ready(function(){
 		
 			$(".buy-btn").each(function(){
 			$(this).click(function(){
@@ -81,6 +83,5 @@ $(document).ready(function(){
 	array_push($result, $script);
 
 	echo json_encode($result);
-}
 
 ?>

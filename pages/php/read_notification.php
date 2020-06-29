@@ -32,7 +32,7 @@ if($r_comment !="")
 	}
 	else
 	{
-		echo $status;
+		echo "Something went wrong";
 	}
 }
 else

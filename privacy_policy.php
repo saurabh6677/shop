@@ -5,7 +5,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -29,7 +29,7 @@ require_once("common_files/database/database.php");
 require_once("assist/nav.php");
 ?>
 
-<h2 class="text-center">Privacy Policy</h2>
+<h2 class="text-center bg-success text-light p-2 ">Privacy Policy</h2>
 <div class="p-3 shadow-lg m-2" style="justify-content:">
 	<h5>Children's privacy</h5>
 	<p>

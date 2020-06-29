@@ -5,7 +5,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -29,7 +29,7 @@ require_once("common_files/database/database.php");
 require_once("assist/nav.php");
 ?>
 
-<h2 class="text-center">Terms and Conditions</h2>
+<h2 class="text-center bg-white p-2 shadow-sm">Terms and Conditions</h2>
 <div class="p-3 shadow-lg m-2" style="justify-content:">
 	<p>
 A cookie is a small amount of information that’s downloaded to your computer or device when you visit certain websites. We use a number of different cookies on the Shopify website, including strictly necessary, performance, advertising, and social media or content cookies. Cookies make your browsing experience better by allowing the website to remember your actions and preferences (such as login and region selection). This means you don’t have to re-enter this information each time you return to the site or browse from one page to another. Cookies also provide information on how people use the website, for instance whether it’s their first time visiting or if they are a frequent visitor.

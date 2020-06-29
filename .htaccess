@@ -5,7 +5,11 @@ RewriteRule ^notification$ pages/php/notification_main.php
 RewriteRule ^books/$ http://localhost/bookstore/shop/error
 RewriteRule ^books/(.*)$    pages/php/buy_product_design.php?product_id=$1
 
-RewriteRule ^search/([0-9a-zA-Z]+)$   pages/php/search.php?search=$1
+RewriteRule ^search/(.*)$   pages/php/search.php?search=$1
 RewriteRule ^([a-z]+)$ $.php
-ErrorDocument 404 http://blogbabaji.com/error
-ErrorDocument 403 http://blogbabaji.com/error
+
+#RewriteCond %{SERVER_PORT} 80
+#RewriteCond %{HTTP_HOST} ^(www\.)?blogbabaji\.com
+#RewriteRule ^(.*)$ https://blogbabaji.com [R,L]
+ErrorDocument 404 http://localhost/bookstore/shop/error
+ErrorDocument 403 http://localhost/bookstore/shop/error

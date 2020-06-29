@@ -158,7 +158,7 @@ $(document).ready(function(){
 										$(".signup-notice").append(div);
 										setTimeout(function(){
 											$(".signup-notice").html("");
-										},6000);
+										},900000);
 										$(".signup-btn").removeAttr("disabled");
 										$(".signup-form").trigger('reset');	
 									}
@@ -474,7 +474,7 @@ $(document).ready(function(){
 
 
 // upload file code 
-
+/*
 $(document).ready(function(){
 		$(".upload-form").submit(function(e){
 			e.preventDefault();
@@ -543,28 +543,9 @@ $(document).ready(function(){
 
 // end upload code
 
-// dynamic page request
+*/
 
-$(document).ready(function(){
-	
-	$(".menu").each(function(){
-		$(this).click(function(){
-			$(".menu").removeClass("border border-primary");
-			var link = $(this).attr("link");	
-			$(this).addClass("border border-primary");	
-			$.ajax({
-				type : "POST",
-				url : link,
-				success : function(response){
-					$(".dynamic-result").html(response);
-					
-				}
-			});
-		});
-	
 
-	});
-});
 
 // edit profile code 
 
@@ -650,7 +631,7 @@ $(document).ready(function(){
 		else if(width >768)
 		{
 			var start = 0;
-			var end = 8;
+			var end = 7;
 			dynamic_load(start,end);
 			function dynamic_load(start,end)
 			{
@@ -701,21 +682,23 @@ index();
 							var start = 0;
 							var end = 3;
 						dynamic_load(start,end);
+					$(".result").html("");
 						function dynamic_load(start,end)
 						{
+
 							$.ajax({
 								type : "POST",
 								url : "pages/php/short_by_price.php",
 								cache : false,  
 								data : {
-									start : start,
-									end : end,
-									min : min,
-									max : max
+									start : Number(start),
+									end : Number(end),
+									min : Number(min),
+									max : Number(max)
 								},
 								success : function(response)
 								{
-									$(".result").html("");
+									
 									var all_data = JSON.parse(response.trim());
 									$(".result").append(all_data);
 								}
@@ -738,8 +721,9 @@ index();
 					else if(width >768)
 					{
 						var start = 0;
-						var end = 8;
+						var end = 7;
 						dynamic_load(start,end);
+					$(".result").html("");
 						function dynamic_load(start,end)
 						{
 							$.ajax({
@@ -747,14 +731,14 @@ index();
 								url : "pages/php/short_by_price.php",
 								cache : false,
 								data : {
-									start : start,
-									end : end,
-									min : min,
-									max : max
+									start : Number(start),
+									end : Number(end),
+									min : Number(min),
+									max : Number(max)
 								},
 								success : function(response)
 								{
-									$(".result").html("");
+									
 									var all_data = JSON.parse(response.trim());
 									$(".result").append(all_data);
 								}
@@ -795,6 +779,7 @@ index();
 						var start = 0;
 						var end = 3;
 					dynamic_load(start,end);
+					$(".result").html("");
 					function dynamic_load(start,end)
 					{
 						$.ajax({
@@ -808,7 +793,6 @@ index();
 							},
 							success : function(response)
 							{
-								$(".result").html("");
 								var all_data = JSON.parse(response.trim());
 								$(".result").append(all_data);
 							}
@@ -831,10 +815,12 @@ index();
 				else if(width >768)
 				{
 					var start = 0;
-					var end = 8;
+					var end = 7;
 					dynamic_load(start,end);
+					$(".result").html("");
 					function dynamic_load(start,end)
 					{
+
 						$.ajax({
 							type : "POST",
 							url : "pages/php/short_by_city.php",
@@ -846,7 +832,7 @@ index();
 							},
 							success : function(response)
 							{
-								$(".result").html("");
+								
 								var all_data = JSON.parse(response.trim());
 								$(".result").append(all_data);
 							}

@@ -8,7 +8,7 @@ require_once("common_files/database/database.php");
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, inital-scal=1.0">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="common_files/css/animate.css">
@@ -55,9 +55,9 @@ require_once("common_files/database/database.php");
 <?php
 require_once("assist/nav.php");
 ?>
-<div class="container-fluid my-3">
+<div class="container-fluid">
 	<div class="row ">
-		<div class="col-md-12 ">
+		<div class="col-md-12 p-0 m-0">
 			<?php require_once("assist/slider.php");?>
 		</div>
 </div>
@@ -73,7 +73,7 @@ require_once("assist/nav.php");
 				<?php
 				$get_city = "SELECT DISTINCT city FROM users";
 				$city_response = $db->query($get_city);
-				if($response)
+				if($city_response)
 				{
 					while($data =$city_response->fetch_assoc())
 					{
@@ -97,6 +97,8 @@ require_once("assist/nav.php");
 		</div>
 	</div>
 </div>
+</div>
+
 <?php
 require_once("assist/footer.php");
 

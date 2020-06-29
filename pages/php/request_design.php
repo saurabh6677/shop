@@ -40,7 +40,7 @@ if(empty($username))
 							<div class="media-body ml-2">
 							<p>Mr. '.$sander_name.' say\'s to You <br>'.$comment.' </p><br>
 							<lable>Fix Metting </lable>
-							<input type="text" class="form-control r_comment" placeholder="ok done met tomorrow at 4:00 pm Inderapark">
+							<input type="text" class="form-control re_comment" placeholder="ok done met tomorrow at 4:00 pm Inderapark">
 							<br>
 							<button class="btn btn-primary mt-4 accept-btn " name="'.base64_encode($id).'">Accept</button>
 							<button class="btn btn-danger mt-4 reject-btn" name="'.base64_encode($id).'">Reject</button>
@@ -80,7 +80,7 @@ if(empty($username))
 						<span class="text-danger font-weight-bold">'.$data['sender_name'].'     '.$send_date.'<small class="float-right"> You Reject This Request</small></span><br>
 						'.$data['comment'].' <i class="fa fa-close close-btn close" name="'.base64_encode($data['id']).'"></i><br>
 						<lable class="d-none">Fix Metting </lable>
-						<input type="text" class="form-control d-none w-50 r_comment" placeholder="ok done met tomorrow at 4:00 pm Inderapark">
+						<input type="text" class="form-control d-none w-50 re_comment" placeholder="ok done met tomorrow at 4:00 pm Inderapark">
 						<button class="btn btn-primary mt-4 d-none accept-btn" name="'.base64_encode($data['id']).'">Accept</button>
 						<button class="btn btn-danger mt-4 d-none reject-btn" name="'.base64_encode($data['id']).'">Reject</button>
 						<button class="btn btn-danger mt-4 edit-btn" name="'.base64_encode($data['id']).'">Edit This</button>
@@ -206,14 +206,14 @@ if(empty($username))
 				var id = $(this).attr("name");
 				var close_btn = this;
 				var status = "accept";
-				var r_comment = $(".r_comment").val();
+				var r_comment = $(".re_comment").val();
 				if(r_comment != "")
 				{
 					$.ajax({
 						type : "POST",
 						url : "http://localhost/bookstore/shop/pages/php/read_notification.php",
 						data : {
-							id : btoa(id),
+							id : id,
 							status : btoa(status),
 							r_comment : r_comment
 						},
@@ -261,7 +261,7 @@ if(empty($username))
 				var id = $(this).attr("name");
 				var close_btn = this;
 				var status = "reject";
-				var r_comment = $(".r_comment").val();
+				var r_comment = $(".re_comment").val();
 				if(r_comment != "")
 				{
 					$.ajax({

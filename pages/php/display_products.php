@@ -3,7 +3,7 @@ require_once("../../common_files/database/database.php");
 $start = $_POST['start'];
 $end = $_POST['end'];
 $result = [];
-$get_data = "SELECT * FROM products  LIMIT $start,$end";
+$get_data = "SELECT * FROM products  ORDER BY rand() LIMIT $start,$end";
 $response = $db->query($get_data);
 
 
@@ -29,7 +29,10 @@ if($response)
 		</div>";
 		array_push($result, $data);
 	}
-	$script = '<script>$(document).ready(function(){
+	
+	
+}
+$script = '<script>$(document).ready(function(){
 		
 			$(".buy-btn").each(function(){
 			$(this).click(function(){
@@ -80,6 +83,5 @@ $(document).ready(function(){
 	array_push($result, $script);
 
 	echo json_encode($result);
-}
 
 ?>
