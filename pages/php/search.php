@@ -9,7 +9,7 @@ $search = $_GET['search'];
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="view-port" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome</title>
 	<link rel="stylesheet" href="http://localhost/bookstore/shop/common_files/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://localhost/bookstore/shop/common_files/css/animate.css">
@@ -50,7 +50,7 @@ require_once("../../assist/nav.php");
 				<p class='text-center p-0 m-0'>Price  : <i class='fa fa-rupee'></i> ".$data['price']."</p>
 				<p class='text-center p-0 m-0 font-weight-bold text-danger'>Saller : ".$name."</p>
 				<button class='btn btn-primary buy-btn' product-id='".$data['id']."'><i class='fa fa-shopping-bag'></i> Buy Now</button>
-				<button class='btn btn-danger cart-btn' product-id='".$data['id']."'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
+				<button class='btn btn-danger cart-btn' product-id='".base64_encode($data['id'])."'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
 				</div>
 				</div>";
 			}
@@ -79,7 +79,44 @@ require_once("../../assist/footer.php");
 		});
 		
 		
-	});</script>
+	});
+		// add to cart code
+
+$(document).ready(function(){
+	$(".cart-btn").each(function(){
+		$(this).click(function(){
+			var product_id = $(this).attr("product-id");
+			$.ajax({
+				type : "POST",
+				url : "http://localhost/bookstore/shop/pages/php/add_to_cart.php",
+				data : {
+					product_id : product_id
+				},
+				beforeSend : function(){
+					$(this).html("Please wait..");
+				},
+				success : function(response){
+					if(response.trim() == "success")
+					{
+						var num = Number($(".cart-sup").html());
+						num++;
+						$(".cart-sup").html(num);
+					}
+					else if(response.trim() == "unable to add cart" || response.trim() == "This product already in your cart")
+					{
+						alert(response.trim());
+					}
+					else
+					{
+						
+						window.location = "http://localhost/bookstore/shop/login.php";
+					}
+				}
+			});
+		});
+	});
+});
+	</script>
 </body> 
 </html>
 

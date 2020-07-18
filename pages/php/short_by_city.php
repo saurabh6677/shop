@@ -19,7 +19,7 @@ if($response)
 		$name = $data_name['fullname'];
 		$data = "<div class='col-md-3  p-3'>
 		<div class='shadow-lg rounded-lg pb-3' align='center'>
-		<img src='products/".$data['thumb']."' alt='".$data['title']."' class='mt-2 shadow-lg' style='border:5px solid #fff'>
+		<img src='http://localhost/bookstore/shop/products/".$data['thumb']."' alt='".$data['title']."' class='mt-2 shadow-lg' style='border:5px solid #fff'>
 		<p class='text-center text-uppercase font-weight-bold p-0 m-0'>".$data['category']."</p>
 		<p class='text-center text-capitalize font-weight-bold p-0 m-0'>Title : ".$data['title']."</p>
 		<p class='text-center p-0 m-0'>Price  : <i class='fa fa-rupee'></i> ".$data['price']."</p>
